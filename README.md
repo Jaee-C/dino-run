@@ -9,10 +9,17 @@
 
 <!-- Fill this section by Milestone 1 (see specification for details) -->
 
-Here you should be discussing how you will be delegating tasks among team members, as well
-as protocols and processes you will use to keep the project organised. Keep it updated 
-throughout the duration of the project. By the final submission it should contain 
-a summary of who completed what. (You should of course remove and replace this paragraph!)
+* The group will meet weekly on Tuesdays.
+* We will use Discord to communicate and Trello for project/task management and delegation.
+* Git workflow
+  * Every feature will have it's own branch and will be named appropriately
+  * Every feature should be code reviewed (ie. pull requests should be approved by at least 1 other member before merging)
+* Communicate with the team if tasks cannot be completed on time.
+* Tentative delegation
+  * Xin Yu: Models
+  * Aurelia: Textures and Shaders
+  * Bowen: Scripting (Procedural Generation)
+  * Daniel: Scripting (Particles)
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
@@ -25,10 +32,14 @@ Below are examples of markdown features available on GitHub that might be useful
 For more details you can find a guide [here](https://docs.github.com/en/github/writing-on-github).
 
 ### Table of contents
-* [Game Summary](#game-summary)
-* [Technologies](#technologies)
-* [Using Images](#using-images)
-* [Code Snipets](#code-snippets)
+- [COMP30019 – Graphics and Interaction](#comp30019--graphics-and-interaction)
+  - [Teamwork plan/summary](#teamwork-plansummary)
+  - [Final report](#final-report)
+    - [Table of contents](#table-of-contents)
+    - [Game Summary](#game-summary)
+    - [Technologies](#technologies)
+    - [Using Images](#using-images)
+    - [Code Snippets](#code-snippets)
 
 ### Game Summary
 _Exciting title_ is a first-person shooter (FPS) set in...
