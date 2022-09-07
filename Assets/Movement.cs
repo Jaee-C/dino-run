@@ -13,65 +13,49 @@ public class Movement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         planeGenerator = FindObjectOfType<GeneratePlane>();
-        rigidBody.velocity = new Vector3(0, 0, 10f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //rigidBody.MovePosition(this.transform.position + new Vector3(0, 0, 0.2f));
-        //rigidBody.AddForce(new Vector3(0, 0, .2f), mode: ForceMode.VelocityChange
-
-        bool isMoving = false;
+        if (this.transform.position.z > planeGenerator.getLastPlane().transform.position.z + GeneratePlane.PLANE_SIZE / 2)
+        {
+            planeGenerator.spawnPlane();
+            planeGenerator.destroy();
+        }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (isColliding)
+            if(rigidBody.velocity.x > -10)
             {
-                rigidBody.velocity = new Vector3(-10f, 0, 0);
+                rigidBody.AddForce(new Vector3(-10f, 0, 0));
             }
-            else
-            {
-                rigidBody.velocity = new Vector3(-10f, 0, 10f);
-            }
-            isMoving = true;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (isColliding)
+            if (rigidBody.velocity.x < 10)
             {
-                rigidBody.velocity = new Vector3(10f, 0, 0);
+                rigidBody.AddForce(new Vector3(10f, 0, 0));
             }
-            else
-            {
-                rigidBody.velocity = new Vector3(10f, 0, 10f);
-            }
-            isMoving = true;
         }
 
         if (isColliding)
         {
-            if(rigidBody.velocity.z != 0 && rigidBody.velocity.z > -0.1f) isColliding = false;
+            if(Mathf.Abs(rigidBody.velocity.z) < 0.3f) isColliding = false;
         }
-        else if (!isMoving)
+        else
         {
-            rigidBody.velocity = new Vector3(0, 0, 10f);    
+            if(rigidBody.velocity.z < 10) rigidBody.AddForce(new Vector3(0, 0, 100f));
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Collider collider = collision.collider;
-        if (collider.name == "End")
+        if (collider.name.StartsWith("Obstacle"))
         {
-            planeGenerator.spawnPlane();
-            collider.gameObject.GetComponent<BoxCollider>().enabled = false;
-            Destroy(collider.transform.parent.gameObject, 1f);
-        }else if (collider.name.StartsWith("Obstacle"))
-        {
-            rigidBody.velocity = Vector3.zero;
-            rigidBody.AddForce(new Vector3(0, 0, -200f));
+            rigidBody.AddForce(-rigidBody.velocity * 70);
             isColliding = true;
         }
     }

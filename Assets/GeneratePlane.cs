@@ -5,43 +5,55 @@ using UnityEngine;
 public class GeneratePlane : MonoBehaviour
 {
     private GameObject savedPlane;
-    private GameObject plane;
+    private GameObject firstPlane;
     private GameObject obstacle;
-    private Vector3 endPosition;
-    private Vector3 offset;
+    private Queue<GameObject> planes = new Queue<GameObject>();
+    public static int PLANE_SIZE = 10;
+
+    public GameObject getLastPlane()
+    {
+        return this.planes.Peek();
+    }
+
+    public void destroy()
+    {
+        GameObject lastPlane = planes.Dequeue();
+        Destroy(lastPlane);
+    }
 
     public void generateObstacles()
     {
-        for (float x = plane.transform.position.x - 5; x < plane.transform.position.x + 5; x++)
+        for (float x = firstPlane.transform.position.x - 5; x < firstPlane.transform.position.x + 5; x++)
         {
-            for(float z = plane.transform.position.z - 5; z < plane.transform.position.z + 5; z++)
+            for(float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
             {
                 float height = Random.value * 10f;
                 if(height >= 9.8f)
                 {
                     GameObject generatedObstacle = Instantiate(obstacle, new Vector3(0, 0, 0), Quaternion.identity);
-                    generatedObstacle.transform.parent = plane.transform;
+                    generatedObstacle.transform.parent = firstPlane.transform;
                     generatedObstacle.transform.localScale = new Vector3(1, height - 7f, 1);
                     generatedObstacle.transform.position = new Vector3(x, 0 + (height - 7f) * 0.5f, z);
                 }
             }
         }
     }
-
+    
     public void spawnPlane()
     {
-        GameObject temp = Instantiate(savedPlane, endPosition, Quaternion.identity);
-        endPosition = plane.transform.GetChild(0).transform.position + offset;
-        plane = temp;
+        Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, PLANE_SIZE);
+        GameObject temp = Instantiate(savedPlane, newPosition, Quaternion.identity);
+        this.firstPlane = temp;
         generateObstacles();
+        this.planes.Enqueue(temp);
     }
     // Start is called before the first frame update
     void Start()
     {
         savedPlane = GameObject.Find("Plane");
-        plane = Instantiate(savedPlane, new Vector3(0, 0, 0), Quaternion.identity);
-        offset = savedPlane.transform.GetChild(0).transform.position - savedPlane.transform.position;
-
+        GameObject plane = Instantiate(savedPlane, new Vector3(0, 0, 0), Quaternion.identity);
+        planes.Enqueue(plane);
+        firstPlane = plane;
         obstacle = GameObject.Find("Obstacle");
 
         for (int i = 0; i < 15; i++)
