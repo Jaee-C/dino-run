@@ -816,10 +816,12 @@ MonoBehaviour:
   speed: 1
   speedIncrease: 1
   dodgeSpeed: 1
-  healthBar: {fileID: 293449985}
   health: 100
   maxHealth: 100
   healthDecay: 0.1
+  slowdownRate: 0.8
+  slowdownThreshold: 20
+  healthBar: {fileID: 293449985}
 --- !u!136 &1658643922
 CapsuleCollider:
   m_ObjectHideFlags: 0
