@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
 
         speed += speedIncrease * Time.deltaTime; // Increases speed over time
         
+        // Plane is destroyed when player passes it
         if (this.transform.position.z - cameraMovement.zOffset > planeGenerator.getLastPlane().transform.position.z + GeneratePlane.PLANE_SIZE / 2)
         {
             planeGenerator.spawnPlane();

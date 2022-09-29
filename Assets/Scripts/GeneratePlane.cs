@@ -9,7 +9,6 @@ public class GeneratePlane : MonoBehaviour
 
     private Queue<GameObject> planes = new Queue<GameObject>();
     private GameObject firstPlane;
-    private Camera cam;
     public static int PLANE_SIZE = 10;
 
     public GameObject getLastPlane()
@@ -23,8 +22,10 @@ public class GeneratePlane : MonoBehaviour
         Destroy(lastPlane);
     }
 
+    // Randomly generate obstacles for the plane
     public void generateObstacles()
     {
+        // Obstacle is generated when the random value is higher than a specific value
         for (float x = firstPlane.transform.position.x - 5; x < firstPlane.transform.position.x + 5; x++)
         {
             for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
@@ -41,6 +42,7 @@ public class GeneratePlane : MonoBehaviour
         }
     }
 
+    // Spawn a new plane
     public void spawnPlane()
     {
         Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, PLANE_SIZE);
@@ -52,7 +54,6 @@ public class GeneratePlane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cam = Camera.main;
         GameObject plane = Instantiate(planeObject, new Vector3(0, 0, 0), Quaternion.identity);
         planes.Enqueue(plane);
         firstPlane = plane;
