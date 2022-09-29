@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float speedIncrease = 1.0f;
     [SerializeField] private float dodgeSpeed = 1.0f;
+    [SerializeField] private FollowPlayer cameraMovement;
 
     private GeneratePlane planeGenerator;
 
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         speed += speedIncrease * Time.deltaTime; // Increases speed over time
         
-        if (this.transform.position.z > planeGenerator.getLastPlane().transform.position.z + GeneratePlane.PLANE_SIZE / 2)
+        if (this.transform.position.z - cameraMovement.zOffset > planeGenerator.getLastPlane().transform.position.z + GeneratePlane.PLANE_SIZE / 2)
         {
             planeGenerator.spawnPlane();
             planeGenerator.destroy();

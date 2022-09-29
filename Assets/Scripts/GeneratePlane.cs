@@ -27,10 +27,10 @@ public class GeneratePlane : MonoBehaviour
     {
         for (float x = firstPlane.transform.position.x - 5; x < firstPlane.transform.position.x + 5; x++)
         {
-            for(float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
+            for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
             {
                 float height = Random.value * 10f;
-                if(height >= 9.8f)
+                if (height >= 9.8f)
                 {
                     GameObject generatedObstacle = Instantiate(obstacleObject, new Vector3(0, 0, 0), Quaternion.identity);
                     generatedObstacle.transform.parent = firstPlane.transform;
@@ -40,7 +40,7 @@ public class GeneratePlane : MonoBehaviour
             }
         }
     }
-    
+
     public void spawnPlane()
     {
         Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, PLANE_SIZE);
