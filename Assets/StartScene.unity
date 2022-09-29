@@ -348,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planeObject: {fileID: 4911055584595967894, guid: ef184e2a9d41e4d73b615d29fb6a92e3, type: 3}
   obstacleObject: {fileID: 7065790960261392762, guid: 5e343c289490947549be37020fad1155, type: 3}
+  obstacleChance: 9.9
 --- !u!4 &858576335
 Transform:
   m_ObjectHideFlags: 0
@@ -414,7 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   speedIncrease: 1
-  dodgeSpeed: 1
+  dodgeSpeed: 1.6
   cameraMovement: {fileID: 708064425}
 --- !u!136 &1866742207
 CapsuleCollider:

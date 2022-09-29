@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         // Move the player
         float xMove = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector3(xMove, rb.velocity.y, speed) * dodgeSpeed;
+        rb.velocity = new Vector3(xMove * dodgeSpeed, rb.velocity.y, speed);
 
         speed += speedIncrease * Time.deltaTime; // Increases speed over time
         

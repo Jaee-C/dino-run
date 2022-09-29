@@ -7,6 +7,10 @@ public class GeneratePlane : MonoBehaviour
     [SerializeField] private GameObject planeObject;
     [SerializeField] private GameObject obstacleObject;
 
+    [SerializeField]
+    [Range(0, 10)]
+    private float obstacleChance = 9.8f;
+
     private Queue<GameObject> planes = new Queue<GameObject>();
     private GameObject firstPlane;
     public static int PLANE_SIZE = 10;
@@ -25,13 +29,13 @@ public class GeneratePlane : MonoBehaviour
     // Randomly generate obstacles for the plane
     public void generateObstacles()
     {
-        // Obstacle is generated when the random value is higher than a specific value
+        // Obstacle is generated when the random value is higher than a obstacleChance
         for (float x = firstPlane.transform.position.x - 5; x < firstPlane.transform.position.x + 5; x++)
         {
             for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
             {
                 float height = Random.value * 10f;
-                if (height >= 9.8f)
+                if (height >= obstacleChance)
                 {
                     GameObject generatedObstacle = Instantiate(obstacleObject, new Vector3(0, 0, 0), Quaternion.identity);
                     generatedObstacle.transform.parent = firstPlane.transform;
