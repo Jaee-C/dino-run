@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] public Transform player;
-    [SerializeField] private float zOffset = 7.0f;
+    [SerializeField] public float zOffset = 7.0f;
     [SerializeField] private float yOffset = 2.0f;
 
     // Update is called once per frame

@@ -8,11 +8,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedIncrease = 1.0f;
     [SerializeField] private float dodgeSpeed = 1.0f;
 
+    private GeneratePlane planeGenerator;
+
+
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        planeGenerator = FindObjectOfType<GeneratePlane>();
     }
 
     // Update is called once per frame
@@ -23,6 +27,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(xMove, rb.velocity.y, speed) * dodgeSpeed;
 
         speed += speedIncrease * Time.deltaTime; // Increases speed over time
+        
+        if (this.transform.position.z > planeGenerator.getLastPlane().transform.position.z + GeneratePlane.PLANE_SIZE / 2)
+        {
+            planeGenerator.spawnPlane();
+            planeGenerator.destroy();
+        }
     }
 
     private void OnTriggerEnter(Collider other) {

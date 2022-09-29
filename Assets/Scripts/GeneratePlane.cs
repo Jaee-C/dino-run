@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class GeneratePlane : MonoBehaviour
 {
-    private GameObject savedPlane;
-    private GameObject firstPlane;
-    private GameObject obstacle;
+    [SerializeField] private GameObject planeObject;
+    [SerializeField] private GameObject obstacleObject;
+
     private Queue<GameObject> planes = new Queue<GameObject>();
+    private GameObject firstPlane;
+    private Camera cam;
     public static int PLANE_SIZE = 10;
 
     public GameObject getLastPlane()
@@ -30,7 +32,7 @@ public class GeneratePlane : MonoBehaviour
                 float height = Random.value * 10f;
                 if(height >= 9.8f)
                 {
-                    GameObject generatedObstacle = Instantiate(obstacle, new Vector3(0, 0, 0), Quaternion.identity);
+                    GameObject generatedObstacle = Instantiate(obstacleObject, new Vector3(0, 0, 0), Quaternion.identity);
                     generatedObstacle.transform.parent = firstPlane.transform;
                     generatedObstacle.transform.localScale = new Vector3(1, height - 7f, 1);
                     generatedObstacle.transform.position = new Vector3(x, 0 + (height - 7f) * 0.5f, z);
@@ -42,7 +44,7 @@ public class GeneratePlane : MonoBehaviour
     public void spawnPlane()
     {
         Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, PLANE_SIZE);
-        GameObject temp = Instantiate(savedPlane, newPosition, Quaternion.identity);
+        GameObject temp = Instantiate(planeObject, newPosition, Quaternion.identity);
         this.firstPlane = temp;
         generateObstacles();
         this.planes.Enqueue(temp);
@@ -50,21 +52,14 @@ public class GeneratePlane : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        savedPlane = GameObject.Find("Plane");
-        GameObject plane = Instantiate(savedPlane, new Vector3(0, 0, 0), Quaternion.identity);
+        cam = Camera.main;
+        GameObject plane = Instantiate(planeObject, new Vector3(0, 0, 0), Quaternion.identity);
         planes.Enqueue(plane);
         firstPlane = plane;
-        obstacle = GameObject.Find("Obstacle");
 
         for (int i = 0; i < 15; i++)
         {
             spawnPlane();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
