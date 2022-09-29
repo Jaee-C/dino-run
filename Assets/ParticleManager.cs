@@ -20,22 +20,19 @@ public class ParticleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        float radius = 0.5f;
-        Vector3 dir = new Vector3(-0.2f, -0.3f, 0);
-        float gapAngle = Mathf.Acos((2 - radius * radius) / 2);
+        float radius = 1f;
+        Vector3 N = new Vector3(0.5f, 0.5f, 0.5f);
+        N = N.normalized;
 
-        dir = dir.normalized;
-        float xyAngle = Mathf.Acos(Vector3.Dot(dir, new Vector3(1, 0, 0)));
-        float leftXYAngle = xyAngle - gapAngle;
-        float rightXYAngle = xyAngle + gapAngle;
-        Vector3 leftXYdir = new Vector3(Mathf.Cos(leftXYAngle), Mathf.Sin(leftXYAngle), 0);
-        Vector3 rightXYdir = new Vector3(Mathf.Cos(rightXYAngle), Mathf.Sin(rightXYAngle), 0);
-
-        Debug.DrawLine(Vector3.zero, dir * 100, Color.red, 1000f);
-        Debug.DrawLine(Vector3.zero, leftXYdir * 100, Color.blue, 1000f);
-        Debug.DrawLine(Vector3.zero, rightXYdir * 100, Color.blue, 1000f);
-        */
+        Vector3 v1 = new Vector3(1, 1, 0);
+        v1.z = (-N.y - N.x) / N.z;
+        v1 = v1.normalized;
+        Vector3 v2 = Vector3.Cross(N, v1);
+        v2 = v2.normalized;
+        
+        Debug.DrawLine(Vector3.zero, N * 100, Color.red, 1000f);
+        Debug.DrawLine(Vector3.zero + N * 1, v1 * 100, Color.blue, 1000f);
+        Debug.DrawLine(Vector3.zero + N * 1, v2 * 100, Color.blue, 1000f);
     }
 
     void generateParticle(Vector3 initialPosition, Vector3 direction, float radius, float force)
@@ -59,6 +56,7 @@ public class ParticleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         frameCount++;
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -94,5 +92,6 @@ public class ParticleManager : MonoBehaviour
                 startGen = false;
             }
         }
+        */
     }
 }
