@@ -1,27 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
-    private int frameCount = 0;
-    private bool startGen = false;
-    private int particleCount = 0;
     private List<ParticleLifetime> particles = new List<ParticleLifetime>();
-
-    private int MAX_PARTICLES = 10;
+    private static System.Random rnd = new System.Random();
 
     struct ParticleLifetime
     {
         public GameObject particle;
-        public int createdFrame;
+        public double createdTime;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        float radius = 1f;
-        Vector3 N = new Vector3(0.5f, 0.5f, 0.5f);
+        
+    }
+
+    public void generateParticle(Vector3 initialPos, Vector3 direction, float radius, float force, int numParticles)
+    {
+        if(direction.x == 0)
+        {
+            direction.x = .0001f;
+        }
+        if (direction.y == 0)
+        {
+            direction.y = .0001f;
+        }
+        if (direction.z == 0)
+        {
+            direction.z = .0001f;
+        }
+
+
+        Vector3 N = direction;
         N = N.normalized;
 
         Vector3 v1 = new Vector3(1, 1, 0);
@@ -29,69 +44,65 @@ public class ParticleManager : MonoBehaviour
         v1 = v1.normalized;
         Vector3 v2 = Vector3.Cross(N, v1);
         v2 = v2.normalized;
-        
-        Debug.DrawLine(Vector3.zero, N * 100, Color.red, 1000f);
-        Debug.DrawLine(Vector3.zero + N * 1, v1 * 100, Color.blue, 1000f);
-        Debug.DrawLine(Vector3.zero + N * 1, v2 * 100, Color.blue, 1000f);
-    }
+        Vector3 center = initialPos + direction;
 
-    void generateParticle(Vector3 initialPosition, Vector3 direction, float radius, float force)
-    {
-        GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        particles.Add(new ParticleLifetime() { particle = particle, createdFrame = frameCount });
-        particle.transform.position = initialPosition;
-        particle.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        Vector3 dir = direction;
+        List<Vector3> dirs = new List<Vector3>();
+        Vector3 v1Start = center - v1 * radius;
+        Vector3 v2Start = center - v2 * radius;
+        float sideLength = Mathf.Sqrt(2 * numParticles);
+        for(int i = 0; i < sideLength; i++)
+        {
+            Vector3 currV1 = v1Start + v1 * radius * 2 / sideLength * i;
+            for(int j = 0; j < sideLength; j++)
+            {
+                Vector3 currV2 = v2Start + v2 * radius * 2 / sideLength * j;
+                Vector3 currPos = currV2 + (currV1 - center);
+                Vector3 dir = currPos - initialPos;
+                dir = dir.normalized;
+                dirs.Add(dir);
+            }
+        }
 
-        if (direction.x == 0) dir.x = Random.Range(-radius, radius);
-        if (direction.y == 0) dir.y = Random.Range(-radius, radius);
-        if (direction.z == 0) dir.z = Random.Range(-radius, radius);
+        IEnumerable<Vector3> sampleDirs = dirs.OrderBy(x => rnd.Next()).Take(numParticles);
 
-        dir = dir.normalized;
+        foreach(Vector3 dir in sampleDirs)
+        {
+            GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            particle.transform.position = initialPos;
+            particle.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-        particle.AddComponent<Rigidbody>().mass = 0.5f;
-        particle.GetComponent<Rigidbody>().AddForceAtPosition(dir * force, transform.position);
+            particle.AddComponent<Rigidbody>().mass = 0.5f;
+            particle.GetComponent<Collider>().enabled = false;
+            particle.GetComponent<Rigidbody>().AddForceAtPosition(dir * force, transform.position);
+
+            particles.Add(new ParticleLifetime() { particle = particle, createdTime = Time.realtimeSinceStartupAsDouble });
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         /*
-        frameCount++;
+         * Testing code
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            startGen = true;
+            generateParticle(Vector3.one, new Vector3(0, 1, 0), 100, 100, 300);
         }
-        
-        if(frameCount % 2 == 0)
+        */
+
+        for (int i = 0; i < particles.Count; i++)
         {
-            if (startGen && particleCount < MAX_PARTICLES)
+            ParticleLifetime particleInfo = particles[i];
+
+            if (Time.realtimeSinceStartupAsDouble - particleInfo.createdTime > 2)
             {
-                generateParticle(Vector3.zero, new Vector3(0, 0, 3), 1f, 300f);
-                particleCount++;
+                Destroy(particleInfo.particle);
+                particles.RemoveAt(i);
             }
             else
             {
-                if(particles.Count > 0)
-                {
-                    for(int i = 0; i < particles.Count;)
-                    {
-                        ParticleLifetime particleInfo = particles[i];
-                        if(frameCount - particleInfo.createdFrame > 100)
-                        {
-                            Destroy(particleInfo.particle);
-                            particles.RemoveAt(i);
-                        }
-                        else
-                        {
-                            i++;
-                        }
-                    }
-                }
-                particleCount = 0;
-                startGen = false;
+                i++;
             }
         }
-        */
     }
 }
