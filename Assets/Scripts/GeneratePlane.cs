@@ -7,7 +7,6 @@ public class GeneratePlane : MonoBehaviour
     [SerializeField] private GameObject planeObject;
     [SerializeField] private GameObject obstacleObject;
     [SerializeField] private GameObject foodObject;
-
     [SerializeField]
     [Range(0, 10)]
     private float obstacleChance = 9.8f;
