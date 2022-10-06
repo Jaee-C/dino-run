@@ -6,10 +6,14 @@ public class GeneratePlane : MonoBehaviour
 {
     [SerializeField] private GameObject planeObject;
     [SerializeField] private GameObject obstacleObject;
+    [SerializeField] private GameObject foodObject;
 
     [SerializeField]
     [Range(0, 10)]
     private float obstacleChance = 9.8f;
+    [SerializeField]
+    [Range(0, 10)]
+    private float foodChance = 9.8f;
 
     private Queue<GameObject> planes = new Queue<GameObject>();
     private GameObject firstPlane;
@@ -37,8 +41,18 @@ public class GeneratePlane : MonoBehaviour
                 float height = Random.value * 10f;
                 if (height >= obstacleChance)
                 {
-                    GameObject generatedObstacle = Instantiate(obstacleObject, new Vector3(0, 0, 0), Quaternion.identity);
-                    
+                    float food = Random.value * 10f;
+                    GameObject generatedObstacle;
+
+                    if (food >= foodChance)
+                    {
+                        generatedObstacle = Instantiate(foodObject, new Vector3(0, 0, 0), Quaternion.identity);
+                    }
+                    else
+                    {
+                        generatedObstacle = Instantiate(obstacleObject, new Vector3(0, 0, 0), Quaternion.identity);
+                    }
+
                     // Size and position of the obstacle. TO BE REMOVED WHEN ACTUAL OBSTACLES IS DONE
                     generatedObstacle.transform.parent = firstPlane.transform;
                     generatedObstacle.transform.localScale = new Vector3(1, height - 7f, 1);
