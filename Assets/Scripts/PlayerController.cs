@@ -34,20 +34,22 @@ public class PlayerController : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector3(xMove, rb.velocity.y, speed) * dodgeSpeed;
 
+        // Decelerate health decay after reaching slowdownThreshold
         if (health < slowdownThreshold && slowedSpeed == false)
         {
             slowedSpeed = true;
             speed *= slowdownRate;
         }
+        // Reaccelerate health decay when above slowdownThreshold
         else if (health >= slowdownThreshold)
         {
             slowedSpeed = false;
-            speed *= 1;
+            speed += speedIncrease * Time.deltaTime;
         }
 
-        speed += speedIncrease * Time.deltaTime; // Increases speed over time
+
         health -= healthDecay * Time.deltaTime;
-        healthBar.value = health;
+        healthBar.value = health/maxHealth * 100;
     }
 
     private void OnTriggerEnter(Collider other)
