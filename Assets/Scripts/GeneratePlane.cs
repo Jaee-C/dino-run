@@ -38,6 +38,8 @@ public class GeneratePlane : MonoBehaviour
                 if (height >= obstacleChance)
                 {
                     GameObject generatedObstacle = Instantiate(obstacleObject, new Vector3(0, 0, 0), Quaternion.identity);
+                    
+                    // Size and position of the obstacle. TO BE REMOVED WHEN ACTUAL OBSTACLES IS DONE
                     generatedObstacle.transform.parent = firstPlane.transform;
                     generatedObstacle.transform.localScale = new Vector3(1, height - 7f, 1);
                     generatedObstacle.transform.position = new Vector3(x, 0 + (height - 7f) * 0.5f, z);
