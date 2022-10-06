@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
+    [SerializeField] private float particleTimeout = 2f;
     private List<ParticleLifetime> particles = new List<ParticleLifetime>();
     private static System.Random rnd = new System.Random();
 
@@ -20,9 +21,9 @@ public class ParticleManager : MonoBehaviour
         
     }
 
-    public void generateParticle(Vector3 initialPos, Vector3 direction, float radius, float force, int numParticles)
+    public void generateParticles (Vector3 initialPos, Vector3 direction, float radius, float force, int numParticles)
     {
-        if(direction.x == 0)
+        if (direction.x == 0)
         {
             direction.x = .0001f;
         }
@@ -35,21 +36,23 @@ public class ParticleManager : MonoBehaviour
             direction.z = .0001f;
         }
 
+        // Create a list of directions for each particle
+        List<Vector3> dirs = new List<Vector3>();
 
-        Vector3 N = direction;
-        N = N.normalized;
+        Vector3 N = direction.normalized;
 
         Vector3 v1 = new Vector3(1, 1, 0);
         v1.z = (-N.y - N.x) / N.z;
         v1 = v1.normalized;
         Vector3 v2 = Vector3.Cross(N, v1);
         v2 = v2.normalized;
-        Vector3 center = initialPos + direction;
 
-        List<Vector3> dirs = new List<Vector3>();
+        Vector3 center = initialPos + direction;
         Vector3 v1Start = center - v1 * radius;
         Vector3 v2Start = center - v2 * radius;
+
         float sideLength = Mathf.Sqrt(2 * numParticles);
+
         for(int i = 0; i < sideLength; i++)
         {
             Vector3 currV1 = v1Start + v1 * radius * 2 / sideLength * i;
@@ -65,6 +68,7 @@ public class ParticleManager : MonoBehaviour
 
         IEnumerable<Vector3> sampleDirs = dirs.OrderBy(x => rnd.Next()).Take(numParticles);
 
+        // Creating Particles
         foreach(Vector3 dir in sampleDirs)
         {
             GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -82,19 +86,18 @@ public class ParticleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-         * Testing code
+        /** Testing code*/
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            generateParticle(Vector3.one, new Vector3(0, 1, 0), 100, 100, 300);
+            generateParticles(Vector3.one, new Vector3(0, 1, 0), 100, 100, 300);
         }
-        */
-
+        
+        // Go through every particle and check if they should be removed
         for (int i = 0; i < particles.Count; i++)
         {
             ParticleLifetime particleInfo = particles[i];
 
-            if (Time.realtimeSinceStartupAsDouble - particleInfo.createdTime > 2)
+            if (Time.realtimeSinceStartupAsDouble - particleInfo.createdTime > this.particleTimeout)
             {
                 Destroy(particleInfo.particle);
                 particles.RemoveAt(i);
