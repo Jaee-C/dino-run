@@ -32,8 +32,9 @@ public class GeneratePlane : MonoBehaviour
     // Randomly generate obstacles for the plane
     public void generateObstacles()
     {
+        float obstacleWidth = 1.0f;
         // Obstacle is generated when the random value is higher than a obstacleChance
-        for (float x = firstPlane.transform.position.x - 5; x < firstPlane.transform.position.x + 5; x++)
+        for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + obstacleWidth/2; x < firstPlane.transform.position.x + PLANE_SIZE/2 - obstacleWidth/2; x++)
         {
             for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
             {
@@ -54,7 +55,7 @@ public class GeneratePlane : MonoBehaviour
 
                     // Size and position of the obstacle. TO BE REMOVED WHEN ACTUAL OBSTACLES IS DONE
                     generatedObstacle.transform.parent = firstPlane.transform;
-                    generatedObstacle.transform.localScale = new Vector3(1, height - 7f, 1);
+                    generatedObstacle.transform.localScale = new Vector3(obstacleWidth, height - 7f, 1);
                     generatedObstacle.transform.position = new Vector3(x, 0 + (height - 7f) * 0.5f, z);
                 }
             }
