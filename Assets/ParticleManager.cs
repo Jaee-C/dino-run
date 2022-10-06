@@ -15,12 +15,6 @@ public class ParticleManager : MonoBehaviour
         public double createdTime;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void generateParticles (Vector3 initialPos, Vector3 direction, float radius, float force, int numParticles)
     {
         if (direction.x == 0)
@@ -39,6 +33,7 @@ public class ParticleManager : MonoBehaviour
         // Create a list of directions for each particle
         List<Vector3> dirs = new List<Vector3>();
 
+        // Particle calculations
         Vector3 N = direction.normalized;
 
         Vector3 v1 = new Vector3(1, 1, 0);
@@ -47,12 +42,14 @@ public class ParticleManager : MonoBehaviour
         Vector3 v2 = Vector3.Cross(N, v1);
         v2 = v2.normalized;
 
+        // Start position of particles
         Vector3 center = initialPos + direction;
         Vector3 v1Start = center - v1 * radius;
         Vector3 v2Start = center - v2 * radius;
 
         float sideLength = Mathf.Sqrt(2 * numParticles);
 
+        // Calculating the direction of each particle
         for(int i = 0; i < sideLength; i++)
         {
             Vector3 currV1 = v1Start + v1 * radius * 2 / sideLength * i;
