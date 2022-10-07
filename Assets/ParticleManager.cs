@@ -17,6 +17,7 @@ public class ParticleManager : MonoBehaviour
 
     public void generateParticles (Vector3 initialPos, Vector3 direction, float radius, float force, int numParticles)
     {
+        // Adding offset in case direction vector is 0
         if (direction.x == 0)
         {
             direction.x = .0001f;
@@ -33,9 +34,8 @@ public class ParticleManager : MonoBehaviour
         // Create a list of directions for each particle
         List<Vector3> dirs = new List<Vector3>();
 
-        // Particle calculations
+        // Calculate square on plane given by the direction vector
         Vector3 N = direction.normalized;
-
         Vector3 v1 = new Vector3(1, 1, 0);
         v1.z = (-N.y - N.x) / N.z;
         v1 = v1.normalized;
@@ -47,6 +47,7 @@ public class ParticleManager : MonoBehaviour
         Vector3 v1Start = center - v1 * radius;
         Vector3 v2Start = center - v2 * radius;
 
+        // Step size of each sample point
         float sideLength = Mathf.Sqrt(2 * numParticles);
 
         // Calculating the direction of each particle
@@ -63,6 +64,7 @@ public class ParticleManager : MonoBehaviour
             }
         }
 
+        // List of randomly selected sample points to generate particles
         IEnumerable<Vector3> sampleDirs = dirs.OrderBy(x => rnd.Next()).Take(numParticles);
 
         // Creating Particles
@@ -83,11 +85,13 @@ public class ParticleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /** Testing code*/
+        /* 
+         * Testing code
         if (Input.GetKeyDown(KeyCode.Space))
         {
             generateParticles(Vector3.one, new Vector3(0, 1, 0), 100, 100, 300);
         }
+        */
         
         // Go through every particle and check if they should be removed
         for (int i = 0; i < particles.Count; i++)
