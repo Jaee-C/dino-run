@@ -56,7 +56,7 @@ public class GeneratePlane : MonoBehaviour
         List<ObstacleInfo> obstacleList = new List<ObstacleInfo>();
 
         // Obstacle is generated when the random value is higher than a obstacleChance
-        for (float x = firstPlane.transform.position.x - PLANE_SIZE/2; x < firstPlane.transform.position.x + PLANE_SIZE/2; x++)
+        for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE/2; x++)
         {
             for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
             {
