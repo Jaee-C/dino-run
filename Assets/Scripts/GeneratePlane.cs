@@ -16,7 +16,7 @@ public class GeneratePlane : MonoBehaviour
 
     private Queue<GameObject> planes = new Queue<GameObject>();
     private GameObject firstPlane;
-    public static int PLANE_SIZE = 10;
+    public static int PLANE_SIZE = 20;
 
     public GameObject getLastPlane()
     {
@@ -65,7 +65,7 @@ public class GeneratePlane : MonoBehaviour
     // Spawn a new plane
     public void spawnPlane()
     {
-        Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, PLANE_SIZE);
+        Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, 10);
         GameObject temp = Instantiate(planeObject, newPosition, Quaternion.identity);
         this.firstPlane = temp;
         generateObstacles();
