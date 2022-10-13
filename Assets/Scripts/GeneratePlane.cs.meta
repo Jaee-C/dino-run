@@ -3,7 +3,10 @@ guid: 7259e8a0bcaed4cccb49fc7c51ec79f9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - planeObject: {fileID: 4911055584595967894, guid: ef184e2a9d41e4d73b615d29fb6a92e3, type: 3}
+  - obstacleObject: {fileID: 7065790960261392762, guid: 8f3483545a8f5914aaf37b4ab8797c53, type: 3}
+  - foodObject: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
