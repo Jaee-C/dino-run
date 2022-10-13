@@ -520,8 +520,8 @@ RectTransform:
   m_GameObject: {fileID: 858558669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.825167, y: 0.33758, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.9199998, y: 0.16921979, z: 0.50127316}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 522112266}
   - {fileID: 174013216}
@@ -530,7 +530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -149}
+  m_AnchoredPosition: {x: -378, y: 235}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858558671
@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeObject: {fileID: 4911055584595967894, guid: ef184e2a9d41e4d73b615d29fb6a92e3, type: 3}
-  obstacleObject: {fileID: 7065790960261392762, guid: 5e343c289490947549be37020fad1155, type: 3}
+  obstacleObject: {fileID: 7065790960261392762, guid: 8f3483545a8f5914aaf37b4ab8797c53, type: 3}
   foodObject: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
   obstacleChance: 9.9
   foodChance: 8.6
