@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0, 80)]
     private float slowdownThreshold = 20.0f;
+    [SerializeField] private float obstacleDamage = 10.0f;
+    [SerializeField] private float foodHeal = 10.0f;
     public Slider healthBar;
 
     private bool slowedSpeed;
@@ -80,8 +82,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
-        health -= 20;
+        // Player health change on collision
+        if (other.gameObject.tag == "Obstacle")
+        {
+            health -= obstacleDamage;
+        }
+        else if (other.gameObject.tag == "Food")
+        {
+            health += foodHeal;
+        }
+        Destroy(other.gameObject); 
         healthBar.value = health;
     }
 }

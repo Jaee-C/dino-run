@@ -16,7 +16,13 @@ public class GeneratePlane : MonoBehaviour
 
     private Queue<GameObject> planes = new Queue<GameObject>();
     private GameObject firstPlane;
-    public static int PLANE_SIZE = 10;
+    public static int PLANE_SIZE = 20;
+
+    struct ObstacleInfo
+    {
+        public Vector3 position;
+        public int radius;
+    }
 
     public GameObject getLastPlane()
     {
@@ -29,15 +35,75 @@ public class GeneratePlane : MonoBehaviour
         Destroy(lastPlane);
     }
 
+    private bool inRadius(Vector3 center, int radius, Vector3 point)
+    {
+        bool xRange = point.x >= center.x - radius && point.x <= center.x + radius;
+        bool zRange = point.z >= center.z - radius * 2 && point.z <= center.z + radius * 2;
+
+        if (xRange && zRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     // Randomly generate obstacles for the plane
     public void generateObstacles()
     {
-        float obstacleWidth = 1.0f;
+        List<ObstacleInfo> obstacleList = new List<ObstacleInfo>();
+        int count = 0;
+
         // Obstacle is generated when the random value is higher than a obstacleChance
-        for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + obstacleWidth/2; x < firstPlane.transform.position.x + PLANE_SIZE/2 - obstacleWidth/2; x++)
+        for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE/2; x++)
         {
             for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
             {
+                count++;
+                // Generate an obstacle
+                if (Random.value < count / 190f * 0.5f)
+                {
+                    bool isValidPos = true;
+                    foreach(ObstacleInfo info in obstacleList)
+                    {
+                        if(inRadius(info.position, info.radius, new Vector3(x, 0, z)))
+                        {
+                            isValidPos = false;
+                            break;
+                        }
+                    }
+
+                    if (isValidPos)
+                    {
+                        float rnd = Random.value;
+                        // Randomly choose size
+                        int size;
+                        if (rnd < 0.33f)
+                        {
+                            size = 1;
+                        }
+                        else if (rnd < 0.66f)
+                        {
+                            size = 2;
+                        }
+                        else
+                        {
+                            size = 3;
+                        }
+
+                        GameObject generatedObstacle = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        generatedObstacle.transform.parent = firstPlane.transform;
+                        generatedObstacle.transform.localScale = new Vector3(size / 2f, 3, size * 2 / 2f);
+                        generatedObstacle.transform.position = new Vector3(x, 0, z);
+                        generatedObstacle.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
+
+                        obstacleList.Add(new ObstacleInfo() { position = new Vector3(x, 0, z), radius = size * 3 });
+                    }
+                }
+
+                /*
                 float height = Random.value * 10f;
                 if (height >= obstacleChance)
                 {
@@ -58,6 +124,7 @@ public class GeneratePlane : MonoBehaviour
                     generatedObstacle.transform.localScale = new Vector3(obstacleWidth, height - 7f, 1);
                     generatedObstacle.transform.position = new Vector3(x, 0 + (height - 7f) * 0.5f, z);
                 }
+                */
             }
         }
     }
@@ -65,7 +132,7 @@ public class GeneratePlane : MonoBehaviour
     // Spawn a new plane
     public void spawnPlane()
     {
-        Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, PLANE_SIZE);
+        Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, 10);
         GameObject temp = Instantiate(planeObject, newPosition, Quaternion.identity);
         this.firstPlane = temp;
         generateObstacles();
