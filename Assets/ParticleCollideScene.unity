@@ -770,6 +770,8 @@ MonoBehaviour:
   healthDecay: 0.1
   slowdownRate: 0.8
   slowdownThreshold: 20
+  obstacleDamage: 10
+  foodHeal: 10
   healthBar: {fileID: 858558671}
 --- !u!136 &1866742207
 CapsuleCollider:

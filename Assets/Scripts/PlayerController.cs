@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             health -= obstacleDamage;
+            other.GetComponent<ObstacleController>().Kill();
         }
         else if (other.gameObject.tag == "Food")
         {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7065790960261392760}
   m_Layer: 6
   m_Name: Obstacle
-  m_TagString: Obstacle
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bf5ad4a045d4560b407e0f29c2cd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffect: {fileID: 198297634847316230, guid: 4494cf34459d04cc28a14b1201ebd7f9, type: 3}
 --- !u!33 &7065790960261392766
 MeshFilter:
   m_ObjectHideFlags: 0
