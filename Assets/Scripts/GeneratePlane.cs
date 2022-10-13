@@ -54,14 +54,16 @@ public class GeneratePlane : MonoBehaviour
     public void generateObstacles()
     {
         List<ObstacleInfo> obstacleList = new List<ObstacleInfo>();
+        int count = 0;
 
         // Obstacle is generated when the random value is higher than a obstacleChance
         for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE/2; x++)
         {
             for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
             {
-                // Generate a particle
-                if (Random.value > 0.3f)
+                count++;
+                // Generate an obstacle
+                if (Random.value < count / 190f * 0.5f)
                 {
                     bool isValidPos = true;
                     foreach(ObstacleInfo info in obstacleList)
