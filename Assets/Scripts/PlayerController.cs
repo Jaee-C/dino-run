@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private float slowdownThreshold = 20.0f;
     [SerializeField] private float obstacleDamage = 10.0f;
     [SerializeField] private float foodHeal = 10.0f;
+    [SerializeField] private GameObject restartButton;
     public Slider healthBar;
 
     private bool slowedSpeed;
@@ -34,11 +35,19 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         planeGenerator = FindObjectOfType<GeneratePlane>();
         slowedSpeed = false;
+        restartButton.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (health <= 0)
+        {
+            Time.timeScale = 0;
+            restartButton.SetActive(true);
+        }
+
         // Move the player
         float xMove = Input.GetAxisRaw("Horizontal");
 
