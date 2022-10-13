@@ -16,7 +16,6 @@ public class ObstacleController : MonoBehaviour
 
     public void Kill()
     {
-        Debug.Log("Hello");
         var particles = Instantiate(this.deathEffect);
         particles.transform.position = transform.position;
     }
