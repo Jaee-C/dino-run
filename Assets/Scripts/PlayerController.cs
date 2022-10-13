@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
 
         health -= healthDecay * Time.deltaTime;
-        healthBar.value = health/maxHealth * 100;
+        healthBar.value = health / maxHealth * 100;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -86,12 +86,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Obstacle")
         {
             health -= obstacleDamage;
+            other.gameObject.GetComponent<ObstacleController>().Kill();
         }
         else if (other.gameObject.tag == "Food")
         {
             health += foodHeal;
         }
-        Destroy(other.gameObject); 
+        Destroy(other.gameObject);
         healthBar.value = health;
     }
 }

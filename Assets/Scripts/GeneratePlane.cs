@@ -95,8 +95,7 @@ public class GeneratePlane : MonoBehaviour
                             size = 3;
                         }
 
-                        GameObject generatedObstacle = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        generatedObstacle.tag = "Obstacle";
+                        GameObject generatedObstacle = Instantiate(obstacleObject);
                         generatedObstacle.transform.parent = firstPlane.transform;
                         generatedObstacle.transform.localScale = new Vector3(size / 2f, 3, size);
                         generatedObstacle.transform.position = new Vector3(x, 0, z);
@@ -127,8 +126,7 @@ public class GeneratePlane : MonoBehaviour
 
                     if (isValidPos)
                     {
-                        GameObject generatedObstacle = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        generatedObstacle.tag = "Food";
+                        GameObject generatedObstacle = Instantiate(foodObject);
                         generatedObstacle.transform.parent = firstPlane.transform;
                         generatedObstacle.transform.localScale = new Vector3(0.5f, 5, 1);
                         generatedObstacle.transform.position = new Vector3(x, 0, z);
