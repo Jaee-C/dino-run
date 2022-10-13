@@ -59,7 +59,7 @@ public class GeneratePlane : MonoBehaviour
         // Obstacle is generated when the random value is higher than a obstacleChance
         for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE/2; x++)
         {
-            for (float z = firstPlane.transform.position.z - 5; z < firstPlane.transform.position.z + 5; z++)
+            for (float z = firstPlane.transform.position.z - 4; z < firstPlane.transform.position.z + 4; z++)
             {
                 count++;
                 // Generate an obstacle
@@ -94,12 +94,36 @@ public class GeneratePlane : MonoBehaviour
                         }
 
                         GameObject generatedObstacle = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        generatedObstacle.tag = "Obstacle";
                         generatedObstacle.transform.parent = firstPlane.transform;
                         generatedObstacle.transform.localScale = new Vector3(size / 2f, 3, size * 2 / 2f);
                         generatedObstacle.transform.position = new Vector3(x, 0, z);
                         generatedObstacle.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
 
                         obstacleList.Add(new ObstacleInfo() { position = new Vector3(x, 0, z), radius = size * 3 });
+                    }
+                }
+
+                if(Random.value < count / 190f * 0.3f)
+                {
+                    bool isValidPos = true;
+                    foreach (ObstacleInfo info in obstacleList)
+                    {
+                        if (inRadius(info.position, info.radius, new Vector3(x, 0, z)))
+                        {
+                            isValidPos = false;
+                            break;
+                        }
+                    }
+
+                    if (isValidPos)
+                    {
+                        GameObject generatedObstacle = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        generatedObstacle.tag = "Food";
+                        generatedObstacle.transform.parent = firstPlane.transform;
+                        generatedObstacle.transform.localScale = new Vector3(0.5f, 5, 1);
+                        generatedObstacle.transform.position = new Vector3(x, 0, z);
+                        generatedObstacle.GetComponent<Renderer>().material.color = new Color(0, 1, 0);
                     }
                 }
 
