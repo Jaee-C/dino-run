@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43955868, g: 0.48793232, b: 0.5681629, a: 1}
+  m_IndirectSpecularColor: {r: 0.43955976, g: 0.48793364, b: 0.56816435, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,6 +223,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 23.306, y: 0.689, z: -1.94}
+--- !u!1 &119966508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
+  m_PrefabInstance: {fileID: 127069564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &127069564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -291,6 +296,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6860084409209778885, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9ff75bafd654355498f71089c53c079b, type: 2}
     - target: {fileID: -5206900143526114303, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -299,6 +308,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5c3f6504fc21ecf48a74760849c42b8a, type: 2}
+    - target: {fileID: -1153040964383373707, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -62647080670117424, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 257682520821521101, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -671,6 +688,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
   m_PrefabInstance: {fileID: 127069564}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &812732130
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119966508}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87c7864d7f265b647ba110e0cf2d995f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &858558669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1100,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160475343}
   m_LocalRotation: {x: 0.6294598, y: -0.25539282, z: 0.04197211, w: 0.73266184}
-  m_LocalPosition: {x: 0, y: 3.21, z: 1.3}
+  m_LocalPosition: {x: 0, y: 3.27, z: 1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1134,6 +1171,7 @@ MonoBehaviour:
   foodHeal: 10
   restartButton: {fileID: 868633849}
   healthBar: {fileID: 858558671}
+  anim: {fileID: 0}
 --- !u!136 &1866742207
 CapsuleCollider:
   m_ObjectHideFlags: 0

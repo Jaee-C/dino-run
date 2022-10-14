@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    [SerializeField] private Animation anim;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
