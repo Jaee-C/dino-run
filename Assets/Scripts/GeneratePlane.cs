@@ -15,8 +15,11 @@ public class GeneratePlane : MonoBehaviour
     private float foodChance = 9.8f;
 
     private Queue<GameObject> planes = new Queue<GameObject>();
+    private Queue<GameObject> sideTerrains = new Queue<GameObject> ();
     private GameObject firstPlane;
     public static int PLANE_SIZE = 20;
+
+    TerrainGeneration generator;
 
     struct ObstacleInfo
     {
@@ -33,6 +36,9 @@ public class GeneratePlane : MonoBehaviour
     {
         GameObject lastPlane = planes.Dequeue();
         Destroy(lastPlane);
+
+        Destroy(sideTerrains.Dequeue());
+        Destroy(sideTerrains.Dequeue());
     }
 
     public double euclideanDistance(Vector3 v1, Vector3 v2)
@@ -146,10 +152,17 @@ public class GeneratePlane : MonoBehaviour
         this.firstPlane = temp;
         generateObstacles();
         this.planes.Enqueue(temp);
+
+        GameObject right = this.generator.generateTerrain(firstPlane.transform.position + new Vector3(20, 2f, 0), true);
+        GameObject left = this.generator.generateTerrain(firstPlane.transform.position + new Vector3(-21, 2f, 0), false);
+        sideTerrains.Enqueue(left);
+        sideTerrains.Enqueue(right);
     }
     // Start is called before the first frame update
     void Start()
     {
+        this.generator = GameObject.FindObjectOfType<TerrainGeneration>();
+
         GameObject plane = Instantiate(planeObject, new Vector3(0, 0, 0), Quaternion.identity);
         planes.Enqueue(plane);
         firstPlane = plane;

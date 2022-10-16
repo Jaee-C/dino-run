@@ -12,7 +12,7 @@ public class TerrainGeneration : MonoBehaviour
         //generateTerrain(Vector3.zero);
     }
 
-    public void generateTerrain(Vector3 pos)
+    public GameObject generateTerrain(Vector3 pos, bool isRight)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
         plane.transform.position = pos;
@@ -28,8 +28,22 @@ public class TerrainGeneration : MonoBehaviour
             {
                 if (count < 121)
                 {
-                    vertices[count].y = Mathf.PerlinNoise(i, j) * multiplier;
-                    count++;
+                    if((count + 1) % 11 == 0 && isRight)
+                    {
+                        vertices[count].y = -10f;
+                        count++;
+                    }
+                    else if(count % 11 == 0 && !isRight)
+                    {
+                        vertices[count].y = -10f;
+                        count++;
+                    }
+                    else
+                    {
+                        vertices[count].y = Mathf.PerlinNoise(i, j) * multiplier;
+                        count++;
+                    }
+                    
                 }
             }
         }
@@ -42,6 +56,10 @@ public class TerrainGeneration : MonoBehaviour
         plane.GetComponent<MeshFilter>().mesh.vertices = vertices;
         plane.GetComponent<MeshFilter>().mesh.RecalculateBounds();
         plane.GetComponent<MeshFilter>().mesh.RecalculateNormals();
+
+        plane.transform.localScale = new Vector3(2, 1, 2);
+
+        return plane;
     }
 
     // Update is called once per frame
