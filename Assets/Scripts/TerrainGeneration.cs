@@ -48,11 +48,6 @@ public class TerrainGeneration : MonoBehaviour
             }
         }
 
-        foreach (Vector3 vertex in vertices)
-        {
-            Debug.Log(vertex);
-        }
-
         plane.GetComponent<MeshFilter>().mesh.vertices = vertices;
         plane.GetComponent<MeshFilter>().mesh.RecalculateBounds();
         plane.GetComponent<MeshFilter>().mesh.RecalculateNormals();

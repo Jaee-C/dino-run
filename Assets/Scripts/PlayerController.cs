@@ -106,4 +106,9 @@ public class PlayerController : MonoBehaviour
         Destroy(other.gameObject);
         healthBar.value = health;
     }
+
+    public void test(string s)
+    {
+        Debug.Log(s);
+    }
 }
