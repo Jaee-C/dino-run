@@ -8,11 +8,11 @@ public class GeneratePlane : MonoBehaviour
     [SerializeField] private GameObject obstacleObject;
     [SerializeField] private GameObject foodObject;
     [SerializeField]
-    [Range(0, 10)]
-    private float obstacleChance = 9.8f;
+    [Range(0, 1)]
+    private float obstacleChance = 0.5f;
     [SerializeField]
-    [Range(0, 10)]
-    private float foodChance = 9.8f;
+    [Range(0, 1)]
+    private float foodChance = 0.5f;
 
     private Queue<GameObject> planes = new Queue<GameObject>();
     private Queue<GameObject> sideTerrains = new Queue<GameObject> ();
@@ -71,7 +71,7 @@ public class GeneratePlane : MonoBehaviour
             {
                 count++;
                 // Generate an obstacle
-                if (Random.value < count / 190f * 0.5f)
+                if (Random.value < count / 190f * obstacleChance)
                 {
                     bool isValidPos = true;
                     foreach(ObstacleInfo info in obstacleList)
@@ -119,7 +119,7 @@ public class GeneratePlane : MonoBehaviour
             for (float z = firstPlane.transform.position.z - 4; z < firstPlane.transform.position.z + 4; z++)
             {
                 count++;
-                if (Random.value < count / 190f * 0.3f)
+                if (Random.value < count / 190f * foodChance)
                 {
                     bool isValidPos = true;
                     foreach (ObstacleInfo info in obstacleList)
