@@ -153,8 +153,8 @@ public class GeneratePlane : MonoBehaviour
         generateObstacles();
         this.planes.Enqueue(temp);
 
-        GameObject right = this.generator.generateTerrain(firstPlane.transform.position + new Vector3(20, 2f, 0), true);
-        GameObject left = this.generator.generateTerrain(firstPlane.transform.position + new Vector3(-21, 2f, 0), false);
+        GameObject right = this.generator.generateTerrain(firstPlane.transform.position + new Vector3(18, 2f, 0), true);
+        GameObject left = this.generator.generateTerrain(firstPlane.transform.position + new Vector3(-18, 2f, 0), false);
         sideTerrains.Enqueue(left);
         sideTerrains.Enqueue(right);
     }
