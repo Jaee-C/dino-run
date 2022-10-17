@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7065790960261392766}
   - component: {fileID: 7065790960261392760}
   - component: {fileID: 7765643791223208822}
+  - component: {fileID: 678285887762999723}
   m_Layer: 6
   m_Name: Food
   m_TagString: Food
@@ -98,6 +99,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &678285887762999723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7065790960261392762}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012a1376ae979c94983ae70be67bf726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 50
 --- !u!1001 &4091629037182086631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -161,6 +175,24 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 150da8a782887ed4c8dc3fabeeeeb7f1, type: 3}
+--- !u!1 &3749540533025132726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 150da8a782887ed4c8dc3fabeeeeb7f1, type: 3}
+  m_PrefabInstance: {fileID: 4091629037182086631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2829579028327881811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749540533025132726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012a1376ae979c94983ae70be67bf726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 100
 --- !u!4 &4558447198053075468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 150da8a782887ed4c8dc3fabeeeeb7f1, type: 3}
