@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1866742210}
-  zOffset: 7
-  yOffset: 5
+  zOffset: 8
+  yOffset: 6
   shakeDuration: 0.5
   shakeAmount: 0.05
 --- !u!81 &54431542
@@ -190,8 +190,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 998.34
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -217,14 +217,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54431540}
-  m_LocalRotation: {x: 0.20198391, y: 0, z: 0, w: 0.9793889}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.16191411, y: -0, z: -0, w: 0.9868049}
+  m_LocalPosition: {x: 0, y: 6, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 23.306, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.636, y: 0, z: 0}
 --- !u!1 &119966508 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleTimeout: 2
+  particleMaterial: {fileID: 2100000, guid: 41bf166b06617bf4696c998f2fe261f0, type: 2}
 --- !u!65 &155516126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -570,7 +571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sampleSize: 5
-  multiplier: 3
+  multiplier: 7.08
+  planeMaterial: {fileID: 2100000, guid: c3a8da67d429fb645bd889beff920ba9, type: 2}
+  height: -2.71
 --- !u!65 &182651227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -604,7 +607,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 23c09af4f0242354b9c60528dbe1253a, type: 2}
+  - {fileID: 2100000, guid: c3a8da67d429fb645bd889beff920ba9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -685,7 +688,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 72, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522112267
 MonoBehaviour:
@@ -981,8 +984,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -378, y: 235}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -266.3, y: 189.9}
+  m_SizeDelta: {x: 70, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858558671
 MonoBehaviour:
@@ -1402,7 +1405,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   minHealth: 0
-  healthDecay: 0.1
+  healthDecay: 5
   slowdownRate: 0.8
   slowdownThreshold: 20
   obstacleDamage: 10
