@@ -153,6 +153,8 @@ public class GeneratePlane : MonoBehaviour
         generateObstacles();
         this.planes.Enqueue(temp);
 
+        //this.generator.addPerlin(temp, .7f, .2f, false, false);
+
         GameObject right = this.generator.generateTerrain(firstPlane.transform.position, true);
         GameObject left = this.generator.generateTerrain(firstPlane.transform.position, false);
         sideTerrains.Enqueue(left);

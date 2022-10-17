@@ -366,7 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleTimeout: 2
-  particleMaterial: {fileID: 2100000, guid: 41bf166b06617bf4696c998f2fe261f0, type: 2}
+  particleMaterial: {fileID: 2100000, guid: 754210e896672e545b9771099ef10cb0, type: 2}
 --- !u!65 &155516126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -572,7 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sampleSize: 5
   multiplier: 7.08
-  planeMaterial: {fileID: 2100000, guid: c3a8da67d429fb645bd889beff920ba9, type: 2}
+  planeMaterial: {fileID: 2100000, guid: 754210e896672e545b9771099ef10cb0, type: 2}
   height: -2.71
 --- !u!65 &182651227
 BoxCollider:
