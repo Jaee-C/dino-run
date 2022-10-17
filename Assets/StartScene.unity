@@ -157,6 +157,8 @@ MonoBehaviour:
   player: {fileID: 1866742210}
   zOffset: 7
   yOffset: 5
+  shakeDuration: 0.5
+  shakeAmount: 0.05
 --- !u!81 &54431542
 AudioListener:
   m_ObjectHideFlags: 0
@@ -215,14 +217,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54431540}
-  m_LocalRotation: {x: 0.20185395, y: 0.009305502, z: -0.01779745, w: 0.9792097}
-  m_LocalPosition: {x: -0.00000002681601, y: 5.53, z: -7.72}
+  m_LocalRotation: {x: 0.20198391, y: 0, z: 0, w: 0.9793889}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 23.306, y: 0.689, z: -1.94}
+  m_LocalEulerAnglesHint: {x: 23.306, y: 0, z: 0}
 --- !u!1 &119966508 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
@@ -602,7 +604,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 23c09af4f0242354b9c60528dbe1253a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1394,11 +1396,12 @@ MonoBehaviour:
   speed: 3
   speedIncrease: 1
   dodgeSpeed: 5.26
-  cameraMovement: {fileID: 54431541}
+  playerCamera: {fileID: 54431541}
   enableSpeedLimit: 1
   speedLimit: 10
   health: 100
   maxHealth: 100
+  minHealth: 0
   healthDecay: 0.1
   slowdownRate: 0.8
   slowdownThreshold: 20
