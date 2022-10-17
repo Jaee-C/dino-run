@@ -6,6 +6,13 @@ public class TerrainGeneration : MonoBehaviour
 {
     [SerializeField] float sampleSize = 5f;
     [SerializeField] float multiplier = 3f;
+    [SerializeField] private Material planeMaterial;
+
+    // Position Offsets
+    [SerializeField] private float height = -10f;
+    private float X_OFFSET = 30f;
+    private float Y_OFFSET = 2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +22,12 @@ public class TerrainGeneration : MonoBehaviour
     public GameObject generateTerrain(Vector3 pos, bool isRight)
     {
         GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        plane.transform.position = pos;
+        if (isRight) {
+            plane.transform.position = pos + new Vector3(X_OFFSET, Y_OFFSET, 0);
+        } else {
+            plane.transform.position = pos + new Vector3(-X_OFFSET, Y_OFFSET, 0);
+        }
+        plane.GetComponent<Renderer>().material = planeMaterial;
 
         Vector3[] vertices = plane.GetComponent<MeshFilter>().mesh.vertices;
         float iStart = Random.value * 10;
@@ -28,14 +40,14 @@ public class TerrainGeneration : MonoBehaviour
             {
                 if (count < 121)
                 {
-                    if((count + 1) % 11 == 0 && isRight)
+                    if ((count + 1) % 11 == 0 && isRight)
                     {
-                        vertices[count].y = -10f;
+                        vertices[count].y = height;
                         count++;
                     }
-                    else if(count % 11 == 0 && !isRight)
+                    else if (count % 11 == 0 && !isRight)
                     {
-                        vertices[count].y = -10f;
+                        vertices[count].y = height;
                         count++;
                     }
                     else
@@ -43,7 +55,7 @@ public class TerrainGeneration : MonoBehaviour
                         vertices[count].y = Mathf.PerlinNoise(i, j) * multiplier;
                         count++;
                     }
-                    
+
                 }
             }
         }
@@ -52,7 +64,7 @@ public class TerrainGeneration : MonoBehaviour
         plane.GetComponent<MeshFilter>().mesh.RecalculateBounds();
         plane.GetComponent<MeshFilter>().mesh.RecalculateNormals();
 
-        plane.transform.localScale = new Vector3(2, 1, 2);
+        plane.transform.localScale = new Vector3(4, 1, 2);
 
         return plane;
     }
@@ -60,6 +72,6 @@ public class TerrainGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
