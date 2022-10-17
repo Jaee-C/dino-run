@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float speedIncrease = 1.0f;
     [SerializeField] private float dodgeSpeed = 1.0f;
-    [SerializeField] private FollowPlayer cameraMovement;
+    [SerializeField] private FollowPlayer playerCamera;
     [SerializeField] private bool enableSpeedLimit = true;
     [SerializeField] private float speedLimit = 10f;
 
@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float health = 100.0f;
     [SerializeField] private float maxHealth = 100.0f;
+    [SerializeField] private float minHealth = 0f;
+
     [SerializeField] private float healthDecay = 0.1f;
     [SerializeField] private float slowdownRate = 0.8f;
     [SerializeField]
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Plane is destroyed when player passes it
-        if (this.transform.position.z - cameraMovement.zOffset > planeGenerator.getLastPlane().transform.position.z + GeneratePlane.PLANE_SIZE / 2)
+        if (this.transform.position.z - playerCamera.zOffset > planeGenerator.getLastPlane().transform.position.z + GeneratePlane.PLANE_SIZE / 2)
         {
             planeGenerator.spawnPlane();
             planeGenerator.destroy();
@@ -96,6 +98,7 @@ public class PlayerController : MonoBehaviour
         // Player health change on collision
         if (other.gameObject.tag == "Obstacle")
         {
+            playerCamera.ShakeCamera();
             health -= obstacleDamage;
             other.gameObject.GetComponent<ObstacleController>().Kill();
         }
@@ -104,6 +107,7 @@ public class PlayerController : MonoBehaviour
             health += foodHeal;
         }
         Destroy(other.gameObject);
+        health = Mathf.Clamp(health, minHealth, maxHealth);
         healthBar.value = health;
     }
 
