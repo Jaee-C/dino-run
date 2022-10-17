@@ -6,6 +6,8 @@ using UnityEngine;
 public class ParticleManager : MonoBehaviour
 {
     [SerializeField] private float particleTimeout = 2f;
+    // [SerializeField] private GameObject particleObject;
+    [SerializeField] private Material particleMaterial; 
     private List<ParticleLifetime> particles = new List<ParticleLifetime>();
     private static System.Random rnd = new System.Random();
 
@@ -73,6 +75,7 @@ public class ParticleManager : MonoBehaviour
             GameObject particle = GameObject.CreatePrimitive(PrimitiveType.Cube);
             particle.transform.position = initialPos;
             particle.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            particle.GetComponent<Renderer>().material = particleMaterial;
 
             particle.AddComponent<Rigidbody>().mass = 0.5f;
             particle.GetComponent<Collider>().enabled = false;
