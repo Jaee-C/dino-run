@@ -65,13 +65,13 @@ public class GeneratePlane : MonoBehaviour
         int count = 0;
 
         // Obstacle is generated when the random value is higher than a obstacleChance
-        for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE/2; x++)
+        for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE/2 - 1.5f; x++)
         {
             for (float z = firstPlane.transform.position.z - 4; z < firstPlane.transform.position.z + 4; z++)
             {
                 count++;
                 // Generate an obstacle
-                if (Random.value < count / 190f * obstacleChance)
+                if (Random.value < count / 1900f * obstacleChance)
                 {
                     bool isValidPos = true;
                     foreach(ObstacleInfo info in obstacleList)
@@ -114,12 +114,12 @@ public class GeneratePlane : MonoBehaviour
             }
         }
 
-        for (float x = firstPlane.transform.position.x - PLANE_SIZE / 2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE / 2; x++)
+        for (float x = firstPlane.transform.position.x - PLANE_SIZE / 2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE / 2 - 1.5f; x++)
         {
             for (float z = firstPlane.transform.position.z - 4; z < firstPlane.transform.position.z + 4; z++)
             {
                 count++;
-                if (Random.value < count / 190f * foodChance)
+                if (Random.value < count / 1900f * foodChance)
                 {
                     bool isValidPos = true;
                     foreach (ObstacleInfo info in obstacleList)
