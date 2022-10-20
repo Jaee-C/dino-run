@@ -62,14 +62,16 @@ public class GeneratePlane : MonoBehaviour
     public void generateObstacles()
     {
         List<ObstacleInfo> obstacleList = new List<ObstacleInfo>();
+        var count = 0;
 
         // Obstacle is generated when the random value is higher than a obstacleChance
         for (float x = firstPlane.transform.position.x - PLANE_SIZE/2 + 1.5f; x < firstPlane.transform.position.x + PLANE_SIZE/2 - 1.5f; x++)
         {
             for (float z = firstPlane.transform.position.z - 4; z < firstPlane.transform.position.z + 4; z++)
             {
+                count ++;
                 // Generate an obstacle
-                if (Random.value < obstacleChance)
+                if (Random.value < count / 190f * obstacleChance)
                 {
                     bool isValidPos = true;
                     foreach(ObstacleInfo info in obstacleList)

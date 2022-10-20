@@ -83,12 +83,14 @@ public class PlayerController : MonoBehaviour
         {
             slowedSpeed = true;
             speed *= slowdownRate;
+            dodgeSpeed *= slowdownRate;
         }
         // Reaccelerate health decay when above slowdownThreshold
         else if (health >= slowdownThreshold)
         {
             slowedSpeed = false;
             speed += speedIncrease * Time.deltaTime;
+            dodgeSpeed += speedIncrease * Time.deltaTime / 2;
         }
 
 
