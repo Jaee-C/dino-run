@@ -57,10 +57,13 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = new Vector3(xMove * dodgeSpeed, rb.velocity.y, speed);
 
+        float offset = 1.5f;
+
         // Player can't leave game area
-        if (Mathf.Abs(this.transform.position.x) > GeneratePlane.PLANE_SIZE / 2.0f)
+        if (Mathf.Abs(this.transform.position.x) > GeneratePlane.PLANE_SIZE / 2.0f - offset)
         {
-            this.transform.position = new Vector3(Mathf.Sign(this.transform.position.x) * GeneratePlane.PLANE_SIZE / 2.0f, this.transform.position.y, this.transform.position.z);
+            var sign = Mathf.Sign(this.transform.position.x);
+            this.transform.position = new Vector3(sign * GeneratePlane.PLANE_SIZE / 2.0f - sign * offset, this.transform.position.y, this.transform.position.z);
         }
 
         if (!enableSpeedLimit || enableSpeedLimit && speed < speedLimit)
