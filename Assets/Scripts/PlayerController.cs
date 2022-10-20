@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField] private Animation anim;
+    [SerializeField] private float levelThreshold = 100f;
+    public float distanceRan;
+    public int level;
 
     void Start()
     {
@@ -40,6 +43,8 @@ public class PlayerController : MonoBehaviour
         planeGenerator = FindObjectOfType<GeneratePlane>();
         slowedSpeed = false;
         restartButton.SetActive(false);
+        distanceRan = 0.0f;
+        level = 1;
     }
 
     // Update is called once per frame
@@ -56,6 +61,8 @@ public class PlayerController : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal");
 
         rb.velocity = new Vector3(xMove * dodgeSpeed, rb.velocity.y, speed);
+        this.distanceRan += speed * Time.deltaTime;  // update the distance ran
+        UpdateLevel(distanceRan);
 
         float offset = 1.5f;
 
@@ -114,6 +121,14 @@ public class PlayerController : MonoBehaviour
         Destroy(other.gameObject);
         health = Mathf.Clamp(health, minHealth, maxHealth);
         healthBar.value = health;
+    }
+
+    private void UpdateLevel(float distance)
+    {
+        if (distance > Mathf.Pow(level, level) * levelThreshold)
+        {
+            this.level++;
+        }
     }
 
     public void test(string s)
