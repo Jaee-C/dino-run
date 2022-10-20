@@ -5,14 +5,16 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] public Transform player;
-    [SerializeField] public float zOffset = 7.0f;
     [SerializeField] private float yOffset = 2.0f;
+    [SerializeField] private float xOffset = 0.0f;
+    [SerializeField] public float zOffset = 7.0f;
+    [SerializeField] public bool followLeftRight = true;
 
     // Shake Parameters
     [SerializeField] public float shakeDuration = 0.5f;
     [SerializeField] public float shakeAmount = 0.05f;
 
-    private bool canShake = false;
+    private bool canShake = false;  // set to true when the camera is shaking
     private float _shakeTimer;
 
     // Start is called before the first frame update
@@ -24,13 +26,19 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + new Vector3(0, yOffset, - zOffset);
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        float playerX = player.transform.position.x;
+        float playerY = player.transform.position.y;
+        float playerZ = player.transform.position.z;
+        if (followLeftRight)
         {
-            ShakeCamera();
+            transform.position = new Vector3(playerX + xOffset, playerY + yOffset, playerZ - zOffset);
+        }
+        else
+        {
+            transform.position = new Vector3(xOffset, playerY + yOffset, playerZ - zOffset);
         }
 
+        // Check if the camera is supposed to be shaking at the moment
         if (canShake)
         {
             StartCameraShakeEffect();
@@ -44,19 +52,24 @@ public class FollowPlayer : MonoBehaviour
         _shakeTimer = shakeDuration;
     }
 
+    /** Changes camera position to shakes the camera when the timer is not up 
+    or stops the shaking when the camera is up.
+    */
     public void StartCameraShakeEffect()
     {
         if (_shakeTimer > 0)
         {
+            // Shakes the camera
             transform.localPosition = transform.position + Random.insideUnitSphere * shakeAmount;
             _shakeTimer -= Time.deltaTime;
         }
         else
         {
+            // Stop shaking the character when the shakeTimer is up
             _shakeTimer = 0f;
             transform.position = transform.position;
             canShake = false;
         }
     }
-    
+
 }
