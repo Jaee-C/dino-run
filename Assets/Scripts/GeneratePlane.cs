@@ -144,7 +144,7 @@ public class GeneratePlane : MonoBehaviour
     {
         this.generator = GameObject.FindObjectOfType<TerrainGeneration>();
 
-        GameObject plane = Instantiate(planeObject, new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject plane = Instantiate(planeObject, new Vector3(0, 0, -10), Quaternion.identity);
         planes.Enqueue(plane);
         firstPlane = plane;
 
