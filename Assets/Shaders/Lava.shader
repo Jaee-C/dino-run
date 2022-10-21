@@ -10,11 +10,11 @@ Shader "Custom/Lava"
         _FoamSpeed("Foam Speed", Float) = 0.1             // foam flow speed
         _FoamNoise("Foam Noise", Float) = 1               // noise range
 
-        [Header(LavaColour)]
-        _LavaColour("Lava",Color) = (1,1,1,1)
+        [Header(Lava Colour)]
+        _LavaColour("Lava Colour",Color) = (1,1,1,1)
 
         [Header(Wave)]
-        _WaveFrequencySpeed("X Frequancy(x), X Speed(y), Z Frequancy(z), Z Speed(w),",Vector) = (0.2,1,0.2,1)
+        _WaveFrequencySpeed("X Frequency(x), X Speed(y), Z Frequency(z), Z Speed(w),",Vector) = (0.2,1,0.2,1)
 
         [Header(Caustics)]
         _CausticTex("Caustic Texture", 2D) = "white" {}          //caustic texture
