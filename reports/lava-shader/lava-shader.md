@@ -49,6 +49,9 @@ vertOut vert( vertIn v)
 
 #### Foam
 ![](lava-shader-foam.gif)
+> Shader with just the base lava colour and foam
+
+The 'foam' was added to this shader to make the lava look like it is flowing and give it more movement and excitement. The code for calculating the foam colour is as follows:
 ```c#
 // Implementing Pixel/Fragment Shader
 float4 frag(vertOut v): SV_Target
@@ -57,14 +60,18 @@ float4 frag(vertOut v): SV_Target
     // Make the foam move diagonally accrosss over time
     half foam_tex = tex2D(_FoamTex, v.uv + _Time.y * _FoamSpeed);
     // Enhance the contrast of the foam texture
-    foam_tex = pow(foam_tex,_FoamNoise);
+    foam_tex = pow(foam_tex, _FoamNoise);
     // Makes the foam have hard edges  (stylistic choice)
     half4 foam_color = foamRange < foam_tex * _FoamColour;
     ...
 ```
+A notable stylistic choice was made to make the foam colour essentially binary by checking if the foam_tex was more than the foamRange property. Without this conditional, the texture would be applied with soft edges as shown below:
+![](lava-shader-foam-noise.png)
 
 ### Caustics
+The caustics were added to this shader because it made the lava like a stylised liquid.
 ![](lava-shader-caustics.gif)
+
 ```c#
 float4 frag(vertOut v): SV_Target
 {
@@ -77,10 +84,10 @@ float4 frag(vertOut v): SV_Target
     ...
 }
 ```
-
+2 caustics of different colours (one darker than the other) and offsetted positions were used to create an illusion of depth.
 
 ### Final Colour
-The final colour is constructed by essentially combining the foam, caustics and lava colour.
+The final colour  of each pixel is constructed by essentially combining the foam, caustics and lava colour.
 ```c#
 float4 frag(vertOut v): SV_Target
 {
