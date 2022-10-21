@@ -42,6 +42,7 @@ Shader "Custom/PlaneTransition"
 
             vertOut vert( vertIn v)
             {
+                // Mapping the input vertices to the output vertices (no change)
                 vertOut o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
@@ -52,14 +53,14 @@ Shader "Custom/PlaneTransition"
             {
                 half4 tex = tex2D(_MainTex, v.uv);
                 tex = pow(tex, _TexPow);
-                // Turning the black parts to colour1
+
+                // Colouring the black parts of the texture with Colour1
                 half3 colour1 = float4(1.0 - tex.rgb, 1.0) * _Colour1.rgb;
-                // Turning the white parts to colour2
+
+                // Colouring the white parts of the texture with Colour2
                 half3 colour2 = tex * _Colour2.rgb;
 
-                //combine all
                 float3 finalColor = colour1 + colour2;
-
                 return float4(finalColor, 1);
             }
             ENDHLSL 
