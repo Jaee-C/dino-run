@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4911055584595967892}
   - component: {fileID: 4911055584595967893}
   m_Layer: 3
-  m_Name: Plane
+  m_Name: Lava Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 754210e896672e545b9771099ef10cb0, type: 2}
+  - {fileID: 2100000, guid: b8239503b03ac794fbcf78e731d2ed6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
