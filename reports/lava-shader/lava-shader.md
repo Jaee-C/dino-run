@@ -13,8 +13,10 @@ The first HLSL/CG that we would like to be marked on is the lava shader. This sh
 * `./Assets/Shaders/T_Caustics03.png` Caustics texture used to give the 'lava' look (found from <TODO insert link>)
 * `./Assets/Materials/Lava Terrain.mat` material that utilises the lava shader (this material is applied to the mountainuos terrain of the final level of the game)
 
-## Properties
+## Attributes
+![](lava-shader-attributes.png)
 
+Multiple attributes for the foam, lava colour, wave frerquency and caustics are able to be varied.
 
 ## Breakdown
 * This shader implements both the `vert()` and `frag()` functions
@@ -23,6 +25,8 @@ The first HLSL/CG that we would like to be marked on is the lava shader. This sh
 
 ### Vertex Shader
 ![](lava-shader-vert.gif)
+
+The wave movement was created by taking the cos and sins of the `x` and `z` and adding it to the `y` as follows:
 ```c
 // Implementing Vertex Shader
 vertOut vert( vertIn v)
@@ -49,7 +53,6 @@ vertOut vert( vertIn v)
 
 #### Foam
 ![](lava-shader-foam.gif)
-> Shader with just the base lava colour and foam
 
 The 'foam' was added to this shader to make the lava look like it is flowing and give it more movement and excitement. The code for calculating the foam colour is as follows:
 ```c#
