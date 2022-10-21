@@ -19,16 +19,8 @@ public class TerrainGeneration : MonoBehaviour
         //generateTerrain(Vector3.zero);
     }
 
-    public GameObject generateTerrain(Vector3 pos, bool isRight)
+    public void addPerlin(GameObject plane, float heightScale, float heightOffset, bool addOffset, bool isRight)
     {
-        GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        if (isRight) {
-            plane.transform.position = pos + new Vector3(X_OFFSET, Y_OFFSET, 0);
-        } else {
-            plane.transform.position = pos + new Vector3(-X_OFFSET, Y_OFFSET, 0);
-        }
-        plane.GetComponent<Renderer>().material = planeMaterial;
-
         Vector3[] vertices = plane.GetComponent<MeshFilter>().mesh.vertices;
         float iStart = Random.value * 10;
         float jStart = Random.value * 10;
@@ -40,19 +32,19 @@ public class TerrainGeneration : MonoBehaviour
             {
                 if (count < 121)
                 {
-                    if ((count + 1) % 11 == 0 && isRight)
+                    if ((count + 1) % 11 == 0 && isRight && addOffset)
                     {
                         vertices[count].y = height;
                         count++;
                     }
-                    else if (count % 11 == 0 && !isRight)
+                    else if (count % 11 == 0 && !isRight && addOffset)
                     {
                         vertices[count].y = height;
                         count++;
                     }
                     else
                     {
-                        vertices[count].y = Mathf.PerlinNoise(i, j) * multiplier;
+                        vertices[count].y = Mathf.PerlinNoise(i, j) * heightScale - heightOffset;
                         count++;
                     }
 
@@ -63,6 +55,19 @@ public class TerrainGeneration : MonoBehaviour
         plane.GetComponent<MeshFilter>().mesh.vertices = vertices;
         plane.GetComponent<MeshFilter>().mesh.RecalculateBounds();
         plane.GetComponent<MeshFilter>().mesh.RecalculateNormals();
+    }
+
+    public GameObject generateTerrain(Vector3 pos, bool isRight)
+    {
+        GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        if (isRight) {
+            plane.transform.position = pos + new Vector3(X_OFFSET, Y_OFFSET, 0);
+        } else {
+            plane.transform.position = pos + new Vector3(-X_OFFSET, Y_OFFSET, 0);
+        }
+        plane.GetComponent<Renderer>().material = planeMaterial;
+
+        addPerlin(plane, multiplier, 0f, true, isRight);
 
         plane.transform.localScale = new Vector3(4, 1, 2);
 

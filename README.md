@@ -3,6 +3,8 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
+![](DinoRunLogo.png)
+
 ## Teamwork plan/summary
 
 <!-- [[StartTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
@@ -42,7 +44,9 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
     - [Code Snippets](#code-snippets)
 
 ### Game Summary
-_Exciting title_ is a first-person shooter (FPS) set in...
+![https://youtu.be/4xz4iq8mCRk](GameplayDemo.gif)
+
+[_🦖 Dino Run_ ](https://youtu.be/4xz4iq8mCRk) is an endless runner game where you are a dinosaur running from lava. Avoid obstacles that slow you down, eat food to increase your speed and collect power-ups as you go. Compete with your friends to get the highest score!
 
 ### Technologies
 Project is created with:

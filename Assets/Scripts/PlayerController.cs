@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField] private Animation anim;
+    [SerializeField] private float levelThreshold = 100f;
+    public float distanceRan;
+    public int level;
+    private int maxLevel = 4;
 
     void Start()
     {
@@ -40,6 +44,8 @@ public class PlayerController : MonoBehaviour
         planeGenerator = FindObjectOfType<GeneratePlane>();
         slowedSpeed = false;
         restartButton.SetActive(false);
+        distanceRan = 0.0f;
+        level = 1;
     }
 
     // Update is called once per frame
@@ -56,11 +62,16 @@ public class PlayerController : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal");
 
         rb.velocity = new Vector3(xMove * dodgeSpeed, rb.velocity.y, speed);
+        this.distanceRan += speed * Time.deltaTime;  // update the distance ran
+        UpdateLevel(distanceRan);
+
+        float offset = 1.5f;
 
         // Player can't leave game area
-        if (Mathf.Abs(this.transform.position.x) > GeneratePlane.PLANE_SIZE / 2.0f)
+        if (Mathf.Abs(this.transform.position.x) > GeneratePlane.PLANE_SIZE / 2.0f - offset)
         {
-            this.transform.position = new Vector3(Mathf.Sign(this.transform.position.x) * GeneratePlane.PLANE_SIZE / 2.0f, this.transform.position.y, this.transform.position.z);
+            var sign = Mathf.Sign(this.transform.position.x);
+            this.transform.position = new Vector3(sign * GeneratePlane.PLANE_SIZE / 2.0f - sign * offset, this.transform.position.y, this.transform.position.z);
         }
 
         if (!enableSpeedLimit || enableSpeedLimit && speed < speedLimit)
@@ -80,12 +91,14 @@ public class PlayerController : MonoBehaviour
         {
             slowedSpeed = true;
             speed *= slowdownRate;
+            dodgeSpeed *= slowdownRate;
         }
         // Reaccelerate health decay when above slowdownThreshold
         else if (health >= slowdownThreshold)
         {
             slowedSpeed = false;
             speed += speedIncrease * Time.deltaTime;
+            dodgeSpeed += speedIncrease * Time.deltaTime / 2;
         }
 
 
@@ -109,6 +122,16 @@ public class PlayerController : MonoBehaviour
         Destroy(other.gameObject);
         health = Mathf.Clamp(health, minHealth, maxHealth);
         healthBar.value = health;
+    }
+
+    private void UpdateLevel(float distance)
+    {
+        // Level up when distance ran is greater than level threshold * (level ^ 2)
+        // Leveling up system should be discussed (dino runs faster as the game progressed)
+        if (this.level < maxLevel && distance > Mathf.Pow(level, level) * levelThreshold)
+        {
+            this.level++;
+        }
     }
 
     public void test(string s)
