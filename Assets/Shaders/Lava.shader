@@ -4,26 +4,22 @@ Shader "Custom/Lava"
     {
         // the corresponding information of lava's foam parts
         [Header(Foam)]
-        _FoamTex("FoamTex", 2D) = "white" {}            // foam noise picture
-        _FoamColor("FoamColor",Color) = (1,1,1,1)       // default lava color
-        _FoamRange("FoamRange",Range(0,1)) = 1          // foam range
-        _FoamSpeed("FoamSpeed",Float) = 0.1             // foam flow speed
-        _FoamNoise("FoamNoise",Float) = 1               // noise range
+        _FoamTex("Foam Texture", 2D) = "white" {}         // foam noise picture
+        _FoamColour("Foam Colour", Color) = (1,1,1,1)     // default lava color
+        _FoamRange("Foam Range", Range(0,1)) = 1          // foam range
+        _FoamSpeed("Foam Speed", Float) = 0.1             // foam flow speed
+        _FoamNoise("Foam Noise", Float) = 1               // noise range
 
-        [Header(LavaColor)]
-        _ShallowColor("ShallowColor",Color) = (1,1,1,1) // lava shallow color
-        _DeepColor("DeepColor",Color) = (1,1,1,1)       // lava deep color
-        _DepthRange("DepthRange",Range(0,1)) = 1        // lava depth range
-
+        [Header(LavaColour)]
+        _LavaColour("Lava",Color) = (1,1,1,1)
 
         [Header(Wave)]
-        //fluctuations in x- and z-direction
-        _WaveFrequencySpeed("X Frequancy(x),X Speed(y),Z Frequancy(z),Z Speed(w),",Vector) = (0.2,1,0.2,1)
+        _WaveFrequencySpeed("X Frequancy(x), X Speed(y), Z Frequancy(z), Z Speed(w),",Vector) = (0.2,1,0.2,1)
 
         [Header(Caustics)]
-        _CausticTex("CausticTex", 2D) = "white" {}          //caustic texture
-        _CausticColor1("CausticsColor1",Color) = (1,1,1,1)  // caustics color 1 and 2
-        _CausticColor2("_CausticColor2",Color) = (1,1,1,1)
+        _CausticTex("Caustic Texture", 2D) = "white" {}          //caustic texture
+        _CausticColour1("Caustics Colour 1",Color) = (1,1,1,1)   // caustics color 1 and 2
+        _CausticColour2("Caustics Colour 2",Color) = (1,1,1,1)
 
     }
 
@@ -42,108 +38,70 @@ Shader "Custom/Lava"
 
             // decelear shader variable
             float _FoamRange;
-            float4 _ShallowColor;
-            float4 _DeepColor;
-            float4 _FoamColor;
+            float4 _LavaColour;
+            float4 _FoamColour;
             float _FoamSpeed;
-            float _DepthRange;
             float4 _WaveFrequencySpeed;
             float _FoamNoise;
-            float4 _CausticColor1;
-            float4 _CausticColor2;
- 
+            float4 _CausticColour1;
+            float4 _CausticColour2;
 
-            sampler2D _CameraDepthTexture;
             sampler2D _FoamTex;
-            float4 _FoamTex_ST;
             sampler2D _CausticTex;
             float4 _CausticTex_ST;
 
             // get CPU date to the vertex function
-            struct Attributes
+            struct vertIn
             {
                 float4 vertex           :POSITION;  // vertex data
                 float2 uv               :TEXCOORD0; // uv data
             };
-             
-            struct Varyings
+
+            struct vertOut
             {
                 float4 vertex           :SV_POSITION;   
-                float2 uv               :TEXCOORD0;     
-                float3 pos_world        :TEXCOORD1;     
-                float4 pos_screen       :TEXCOORD2;     
+                float2 uv               :TEXCOORD0;       
             };
 
- 
-
-
-            Varyings vert( Attributes v)
+            // Implementing Vertex Shader
+            vertOut vert( vertIn v)
             {
-                Varyings o;
+                vertOut o;
 
-                //use cos to caculate x direction movement
-                v.vertex.y += cos(_Time.y * _WaveFrequencySpeed.y +  v.vertex.x) * _WaveFrequencySpeed.x;
-                //use sin to caculate y direction movement
-                v.vertex.y += sin(_Time.y * _WaveFrequencySpeed.w +  v.vertex.z ) * _WaveFrequencySpeed.z;
+                // Create Wave movement using cos and sin with the time
+                // v.vertex.y += cos(_Time.y * _WaveFrequencySpeed.y +  v.vertex.x) * _WaveFrequencySpeed.x;
+                // v.vertex.y += sin(_Time.y * _WaveFrequencySpeed.w +  v.vertex.z ) * _WaveFrequencySpeed.z;
 
-                //Convert model vertices in model space to model vertices in clipping space
+                // Convert model vertices in model space to model vertices in clipping space
                 o.vertex = UnityObjectToClipPos(v.vertex);
 
-                //Convert model vertices in model space to model vertices in world space
-                o.pos_world = mul(unity_ObjectToWorld,v.vertex.xyz);
-
-                //Convert model vertices in model space to model vertices in screen space
-                o.pos_screen = ComputeScreenPos(o.vertex);
-
-                //pass the uv value
                 o.uv = v.uv;
-
                 return o;
             }
- 
-            float4 frag(Varyings i):SV_TARGET
+
+            // Implementing Pixel/Fragment Shader
+            float4 frag(vertOut v): SV_Target
             {
-  
-                //get the deepth and then divided by i.pos_screen.w to get each pixel location
-                float2 screenUV = (i.pos_screen.xy)/i.pos_screen.w;
-                //get pixel
-                half depthScene = LinearEyeDepth(tex2D(_CameraDepthTexture,screenUV));
-                //get cooresponding z value
-                float surfaceDepth= UNITY_Z_0_FAR_FROM_CLIPSPACE(i.pos_screen.z);
-                //get the intersection between scenes and lava
-                half depth = saturate(depthScene - surfaceDepth);
+                half foamRange = _FoamRange;
 
-                //lava color
-                //the range between shallow color and deep color
-                half lava_depth = depth * _DepthRange; 
-                //distinguish the shallow lava and deep lava
-                float4 lavaColor = lerp(_ShallowColor,_DeepColor,lava_depth);
-
-
-                half foamRange = depth * _FoamRange;
-                //get foam texture and then adjust foam testure
-                half foam_tex = tex2D(_FoamTex,i.pos_world.xz * _FoamTex_ST.xy + _Time.y * _FoamSpeed).r;
-                // enhance the contrast of the foam texture
+                // Make the foam move diagonally accrosss over time
+                half foam_tex = tex2D(_FoamTex, v.uv + _Time.y * _FoamSpeed);
+                // Enhance the contrast of the foam texture
                 foam_tex = pow(foam_tex,_FoamNoise);
-                //step(a,b):a < b return 1
-                half4 foam_color = step(foamRange,foam_tex) * _FoamColor;
-                
 
-                //sampled twice for focal dispersion and misaligned by _CausticTex_ST
-                half caustic1 = tex2D(_CausticTex,i.uv + _CausticTex_ST.xy).r;
-                half caustic2 = tex2D(_CausticTex,i.uv + _CausticTex_ST.zw).r;
+                // Makes the foam have hard edges  (stylistic choice)
+                half4 foam_color = foamRange < foam_tex * _FoamColour;
 
-                //two times scorched color
-                half3 caustic_color1 = caustic1 * _CausticColor1.rgb;
-                half3 caustic_color2 = caustic2 * _CausticColor2.rgb;
-                
+                // Place two caustic textures
+                half caustic1 = tex2D(_CausticTex, v.uv + _CausticTex_ST.xy).r;
+                half caustic2 = tex2D(_CausticTex, v.uv + _CausticTex_ST.zw).r;
+                half3 caustic_color1 = caustic1 * _CausticColour1.rgb;
+                half3 caustic_color2 = caustic2 * _CausticColour2.rgb;
 
-                //combine all
-                float3 finalColor = foam_color.rgb + lavaColor.rgb + caustic_color1+ caustic_color2;
+                // Combine the foam, caustics and lava colour to get the final
+                float3 finalColour = _LavaColour.rgb + foam_color.rgb + caustic_color1+ caustic_color2;
 
-    
-                return float4(finalColor,1);
- 
+                return float4(finalColour, 1);
             }
             ENDHLSL 
         }
