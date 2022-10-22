@@ -102,18 +102,20 @@ public class GeneratePlane : MonoBehaviour
                         }
 
                         GameObject generatedObject;
-                        // Randomly insert food
+                        // Randomly insert food or obstacle
                         if (Random.value < foodChance)
                         {
                             generatedObject = Instantiate(foodObject);
+                            // set food's y to 1 to give it the 'hovering' look
+                            generatedObject.transform.position = new Vector3(x, 1, z);
                         }
                         else
                         {
                             generatedObject = Instantiate(obstacleObject);
+                            generatedObject.transform.position = new Vector3(x, 0, z);
                         }
 
                         generatedObject.transform.parent = firstPlane.transform;
-                        generatedObject.transform.position = new Vector3(x, 0, z);
                         generatedObject.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
 
                         obstacleList.Add(new ObstacleInfo() { position = new Vector3(x, 0, z), radius = 3*size });
