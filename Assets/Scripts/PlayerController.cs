@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0, 80)]
     private float slowdownThreshold = 20.0f;
-    [SerializeField] private float obstacleDamage = 10.0f;
+    [SerializeField] private float obstacleDamage = 0.0f;
     [SerializeField] private float foodHeal = 10.0f;
     [SerializeField] private GameObject restartButton;
     public Slider healthBar;
