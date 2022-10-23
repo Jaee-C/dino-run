@@ -69,8 +69,8 @@ Shader "Custom/Lava"
                 vertOut o;
 
                 // Create Wave movement using cos and sin with the time
-                // v.vertex.y += cos(_Time.y * _WaveFrequencySpeed.y +  v.vertex.x) * _WaveFrequencySpeed.x;
-                // v.vertex.y += sin(_Time.y * _WaveFrequencySpeed.w +  v.vertex.z ) * _WaveFrequencySpeed.z;
+                v.vertex.y += cos(_Time.y * _WaveFrequencySpeed.y +  v.vertex.x) * _WaveFrequencySpeed.x;
+                v.vertex.y += sin(_Time.y * _WaveFrequencySpeed.w +  v.vertex.z ) * _WaveFrequencySpeed.z;
 
                 // Convert model vertices in model space to model vertices in clipping space
                 o.vertex = UnityObjectToClipPos(v.vertex);
