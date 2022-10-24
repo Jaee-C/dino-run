@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43955868, g: 0.48793232, b: 0.5681629, a: 1}
+  m_IndirectSpecularColor: {r: 0.4395592, g: 0.48793292, b: 0.56816345, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -495,7 +495,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858558670}
-  m_RootOrder: -1
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -572,7 +572,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 554776365}
-  m_RootOrder: -1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -780,7 +780,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 858558670}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -960,7 +960,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 868633850}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1078,7 +1078,7 @@ RectTransform:
   - {fileID: 522112266}
   - {fileID: 174013216}
   m_Father: {fileID: 554776365}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1165,11 +1165,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7259e8a0bcaed4cccb49fc7c51ec79f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeObject: {fileID: 4911055584595967894, guid: ef184e2a9d41e4d73b615d29fb6a92e3, type: 3}
-  obstacleObject: {fileID: 7065790960261392762, guid: 8f3483545a8f5914aaf37b4ab8797c53, type: 3}
-  foodObject: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
+  plane1: {fileID: 4911055584595967894, guid: 08d9ef47d527b8548ae2efbff27bdcfa, type: 3}
+  obstacle1: {fileID: 7065790960261392762, guid: ae787cea4a92544f396db005d2501b02, type: 3}
+  food1: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
+  transition1: {fileID: 4911055584595967894, guid: 88d594d6bf2205641865908d7511a550, type: 3}
+  plane2: {fileID: 4911055584595967894, guid: c746a5d937478714c94ec6d57cb08108, type: 3}
+  obstacle2: {fileID: 7065790960261392762, guid: 8f3483545a8f5914aaf37b4ab8797c53, type: 3}
+  food2: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
+  transition2: {fileID: 4911055584595967894, guid: 5074d54e45bd83545909e9d724d50395, type: 3}
+  plane3: {fileID: 4911055584595967894, guid: 08d9ef47d527b8548ae2efbff27bdcfa, type: 3}
+  obstacle3: {fileID: 7065790960261392762, guid: a2e81d6f76367484eb572b252445266a, type: 3}
+  food3: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
+  transition3: {fileID: 4911055584595967894, guid: 88d594d6bf2205641865908d7511a550, type: 3}
+  plane4: {fileID: 4911055584595967894, guid: c746a5d937478714c94ec6d57cb08108, type: 3}
+  obstacle4: {fileID: 7065790960261392762, guid: 98080518513064c68911ed063b1eabf9, type: 3}
+  food4: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
   obstacleChance: 0.7
-  foodChance: 0.3
+  foodChance: 0.535
 --- !u!4 &858576335
 Transform:
   m_ObjectHideFlags: 0
@@ -1221,7 +1233,7 @@ RectTransform:
   m_Children:
   - {fileID: 641789983}
   m_Father: {fileID: 554776365}
-  m_RootOrder: -1
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

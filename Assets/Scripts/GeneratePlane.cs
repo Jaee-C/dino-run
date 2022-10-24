@@ -4,9 +4,48 @@ using UnityEngine;
 
 public class GeneratePlane : MonoBehaviour
 {
-    [SerializeField] private GameObject planeObject;
-    [SerializeField] private GameObject obstacleObject;
-    [SerializeField] private GameObject foodObject;
+    [Header("Level 1")]
+    [SerializeField] private GameObject plane1;
+    [SerializeField] private Material terrainMat1;
+    [SerializeField] private GameObject obstacle1;
+    [SerializeField] private GameObject food1;
+
+    [Header("Level 1 - 2 Transition")]
+    [SerializeField] private GameObject transition1;
+
+    [Header("Level 2")]
+    [SerializeField] private GameObject plane2;
+    [SerializeField] private Material terrainMat2;
+    [SerializeField] private GameObject obstacle2;
+    [SerializeField] private GameObject food2;
+
+    [Header("Level 2 - 3 Transition")]
+    [SerializeField] private GameObject transition2;
+
+    [Header("Level 3")]
+    [SerializeField] private GameObject plane3;
+    [SerializeField] private Material terrainMat3;
+    [SerializeField] private GameObject obstacle3;
+    [SerializeField] private GameObject food3;
+
+    [Header("Level 3 - 4 Transition")]
+    [SerializeField] private GameObject transition3;
+
+    [Header("Level 4")]
+    [SerializeField] private GameObject plane4;
+    [SerializeField] private Material terrainMat4;
+    [SerializeField] private GameObject obstacle4;
+    [SerializeField] private GameObject food4;
+
+    public struct LevelObjects
+    {
+        public GameObject plane;
+        public Material terrainMat;
+        public GameObject obstacle;
+        public GameObject food;
+    }
+
+    [Header("Obstacles and Food Chances")]
     [SerializeField]
     [Range(0, 1)]
     private float obstacleChance = 0.5f;
@@ -20,6 +59,12 @@ public class GeneratePlane : MonoBehaviour
     public static int PLANE_SIZE = 20;
 
     TerrainGeneration generator;
+    PlayerController player;
+    private int currLevel = 1;
+
+    public LevelObjects curr;
+    public LevelObjects next;
+    private bool isTransition = false;
 
     struct ObstacleInfo
     {
@@ -87,41 +132,57 @@ public class GeneratePlane : MonoBehaviour
                     {
                         float rnd = Random.value;
                         // Randomly choose size
-                        int size;
-                        if (rnd < 0.15f)
+                        int size = 3;
+
+                        GameObject spawnedFood;
+                        GameObject spawnedObstacle;
+
+                        if (this.isTransition)
                         {
-                            size = 1;
-                        }
-                        else if (rnd < 0.4f)
-                        {
-                            size = 2;
+                            Debug.Log("Is Transition");
+
+                            if(Random.value < 0.5f)
+                            {
+                                spawnedFood = curr.food;
+                                spawnedObstacle = curr.obstacle;
+                            }
+                            else
+                            {
+                                spawnedFood = next.food;
+                                spawnedObstacle = next.obstacle;
+                            }
                         }
                         else
                         {
-                            size = 3;
+                            spawnedFood = curr.food;
+                            spawnedObstacle = curr.obstacle;
                         }
 
                         GameObject generatedObject;
                         // Randomly insert food or obstacle
                         if (Random.value < foodChance)
                         {
-                            generatedObject = Instantiate(foodObject);
-                            // set food's y to 1 to give it the 'hovering' look
-                            generatedObject.transform.position = new Vector3(x, 1, z);
+                            generatedObject = Instantiate(curr.food);
                         }
                         else
                         {
-                            generatedObject = Instantiate(obstacleObject);
-                            generatedObject.transform.position = new Vector3(x, 0, z);
+                            generatedObject = Instantiate(curr.obstacle);
                         }
 
                         generatedObject.transform.parent = firstPlane.transform;
-                        generatedObject.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
+                        generatedObject.transform.position = new Vector3(x, 0, z);
+                        //generatedObject.GetComponent<Renderer>().material.color = new Color(1, 0, 0);
 
                         obstacleList.Add(new ObstacleInfo() { position = new Vector3(x, 0, z), radius = 3*size });
                     }
                 }
             }
+        }
+
+        if (this.isTransition)
+        {
+            this.curr = this.next;
+            this.isTransition = false;
         }
     }
 
@@ -129,15 +190,15 @@ public class GeneratePlane : MonoBehaviour
     public void spawnPlane()
     {
         Vector3 newPosition = firstPlane.transform.position + new Vector3(0, 0, 10);
-        GameObject temp = Instantiate(planeObject, newPosition, Quaternion.identity);
+        GameObject temp = Instantiate(curr.plane, newPosition, Quaternion.identity);
         this.firstPlane = temp;
         generateObstacles();
         this.planes.Enqueue(temp);
 
         //this.generator.addPerlin(temp, .7f, .2f, false, false);
 
-        GameObject right = this.generator.generateTerrain(firstPlane.transform.position, true);
-        GameObject left = this.generator.generateTerrain(firstPlane.transform.position, false);
+        GameObject right = this.generator.generateTerrain(firstPlane.transform.position, true, curr.terrainMat);
+        GameObject left = this.generator.generateTerrain(firstPlane.transform.position, false, curr.terrainMat);
         sideTerrains.Enqueue(left);
         sideTerrains.Enqueue(right);
     }
@@ -145,14 +206,43 @@ public class GeneratePlane : MonoBehaviour
     void Start()
     {
         this.generator = GameObject.FindObjectOfType<TerrainGeneration>();
+        this.player = GameObject.FindObjectOfType<PlayerController>();
+        this.curr = new LevelObjects() { plane = plane1, obstacle = obstacle1, food = food1, terrainMat = terrainMat1 };
 
-        GameObject plane = Instantiate(planeObject, new Vector3(0, 0, -10), Quaternion.identity);
+        GameObject plane = Instantiate(plane1, new Vector3(0, 0, -10), Quaternion.identity);
         planes.Enqueue(plane);
         firstPlane = plane;
 
         for (int i = 0; i < 15; i++)
         {
             spawnPlane();
+        }
+    }
+
+    void Update()
+    {
+        if (player.level != currLevel)
+        {
+            Debug.Log("Level switch");
+            // Only 4 levels right now
+            switch (player.level)
+            {
+                case 2:
+                    this.curr.plane = transition1;
+                    this.next = new LevelObjects { plane = plane2, obstacle = obstacle2, food = food2, terrainMat = terrainMat2 };
+                    break;
+                case 3:
+                    this.curr.plane = transition2;
+                    this.next = new LevelObjects { plane = plane3, obstacle = obstacle3, food = food3, terrainMat = terrainMat3 };
+                    break;
+                case 4:
+                    this.curr.plane = transition3;
+                    this.next = new LevelObjects { plane = plane4, obstacle = obstacle4, food = food4, terrainMat = terrainMat4 };
+                    break;
+            }
+            
+            this.isTransition = true;
+            currLevel = player.level;
         }
     }
 }
