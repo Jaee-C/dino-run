@@ -2,24 +2,20 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 8
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Water Test
   m_Shader: {fileID: 4800000, guid: fba3811783f65b34997de66e3c8a5ed5, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -101,6 +97,7 @@ Material:
     - _BaseColour: {r: 0.9716981, g: 0.0779192, b: 0.0779192, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorTint: {r: 0.99008286, g: 0.990566, b: 0.5093005, a: 1}
+    - _Colour: {r: 0.13836467, g: 0.9484638, b: 1, a: 1}
     - _Colour1: {r: 0.08018869, g: 0.75555384, b: 1, a: 1}
     - _Colour2: {r: 1, g: 0.9386792, b: 0.9386792, a: 0}
     - _ColourTint: {r: 0, g: 1, b: 0.8948567, a: 1}
