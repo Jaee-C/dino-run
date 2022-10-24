@@ -6,7 +6,6 @@ public class TerrainGeneration : MonoBehaviour
 {
     [SerializeField] float sampleSize = 5f;
     [SerializeField] float multiplier = 3f;
-    [SerializeField] private Material planeMaterial;
 
     // Position Offsets
     [SerializeField] private float height = -10f;
@@ -59,14 +58,15 @@ public class TerrainGeneration : MonoBehaviour
         plane.GetComponent<MeshFilter>().mesh.RecalculateNormals();
     }
 
-    public GameObject generateTerrain(Vector3 pos, bool isRight)
+    public GameObject generateTerrain(Vector3 pos, bool isRight, Material terrainMaterial)
     {
-        GameObject plane = GameObject.Instantiate(GameObject.FindObjectOfType<GeneratePlane>().curr.plane);
+        GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
         if (isRight) {
             plane.transform.position = pos + new Vector3(X_OFFSET, Y_OFFSET, 0);
         } else {
             plane.transform.position = pos + new Vector3(-X_OFFSET, Y_OFFSET, 0);
         }
+        plane.GetComponent<Renderer>().material = terrainMaterial;
 
         addPerlin(plane, multiplier, 0f, true, isRight);
 

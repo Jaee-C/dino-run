@@ -4,36 +4,48 @@ using UnityEngine;
 
 public class GeneratePlane : MonoBehaviour
 {
+    [Header("Level 1")]
     [SerializeField] private GameObject plane1;
+    [SerializeField] private Material terrainMat1;
     [SerializeField] private GameObject obstacle1;
     [SerializeField] private GameObject food1;
 
+    [Header("Level 1 - 2 Transition")]
     [SerializeField] private GameObject transition1;
 
+    [Header("Level 2")]
     [SerializeField] private GameObject plane2;
+    [SerializeField] private Material terrainMat2;
     [SerializeField] private GameObject obstacle2;
     [SerializeField] private GameObject food2;
 
+    [Header("Level 2 - 3 Transition")]
     [SerializeField] private GameObject transition2;
 
+    [Header("Level 3")]
     [SerializeField] private GameObject plane3;
+    [SerializeField] private Material terrainMat3;
     [SerializeField] private GameObject obstacle3;
     [SerializeField] private GameObject food3;
 
+    [Header("Level 3 - 4 Transition")]
     [SerializeField] private GameObject transition3;
 
+    [Header("Level 4")]
     [SerializeField] private GameObject plane4;
+    [SerializeField] private Material terrainMat4;
     [SerializeField] private GameObject obstacle4;
     [SerializeField] private GameObject food4;
 
     public struct LevelObjects
     {
         public GameObject plane;
+        public Material terrainMat;
         public GameObject obstacle;
         public GameObject food;
     }
 
-
+    [Header("Obstacles and Food Chances")]
     [SerializeField]
     [Range(0, 1)]
     private float obstacleChance = 0.5f;
@@ -185,8 +197,8 @@ public class GeneratePlane : MonoBehaviour
 
         //this.generator.addPerlin(temp, .7f, .2f, false, false);
 
-        GameObject right = this.generator.generateTerrain(firstPlane.transform.position, true);
-        GameObject left = this.generator.generateTerrain(firstPlane.transform.position, false);
+        GameObject right = this.generator.generateTerrain(firstPlane.transform.position, true, curr.terrainMat);
+        GameObject left = this.generator.generateTerrain(firstPlane.transform.position, false, curr.terrainMat);
         sideTerrains.Enqueue(left);
         sideTerrains.Enqueue(right);
     }
@@ -195,7 +207,7 @@ public class GeneratePlane : MonoBehaviour
     {
         this.generator = GameObject.FindObjectOfType<TerrainGeneration>();
         this.player = GameObject.FindObjectOfType<PlayerController>();
-        this.curr = new LevelObjects() { plane = plane1, obstacle = obstacle1, food = food1 };
+        this.curr = new LevelObjects() { plane = plane1, obstacle = obstacle1, food = food1, terrainMat = terrainMat1 };
 
         GameObject plane = Instantiate(plane1, new Vector3(0, 0, -10), Quaternion.identity);
         planes.Enqueue(plane);
@@ -217,15 +229,15 @@ public class GeneratePlane : MonoBehaviour
             {
                 case 2:
                     this.curr.plane = transition1;
-                    this.next = new LevelObjects { plane = plane2, obstacle = obstacle2, food = food2 };
+                    this.next = new LevelObjects { plane = plane2, obstacle = obstacle2, food = food2, terrainMat = terrainMat2 };
                     break;
                 case 3:
                     this.curr.plane = transition2;
-                    this.next = new LevelObjects { plane = plane3, obstacle = obstacle3, food = food3 };
+                    this.next = new LevelObjects { plane = plane3, obstacle = obstacle3, food = food3, terrainMat = terrainMat3 };
                     break;
                 case 4:
                     this.curr.plane = transition3;
-                    this.next = new LevelObjects { plane = plane4, obstacle = obstacle4, food = food4 };
+                    this.next = new LevelObjects { plane = plane4, obstacle = obstacle4, food = food4, terrainMat = terrainMat4 };
                     break;
             }
             
