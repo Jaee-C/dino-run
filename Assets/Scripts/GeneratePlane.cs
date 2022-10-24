@@ -159,7 +159,7 @@ public class GeneratePlane : MonoBehaviour
                         }
 
                         GameObject generatedObject;
-                        // Randomly insert food
+                        // Randomly insert food or obstacle
                         if (Random.value < foodChance)
                         {
                             generatedObject = Instantiate(curr.food);
