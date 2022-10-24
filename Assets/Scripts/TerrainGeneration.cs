@@ -13,6 +13,8 @@ public class TerrainGeneration : MonoBehaviour
     private float X_OFFSET = 30f;
     private float Y_OFFSET = 2f;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,13 +61,12 @@ public class TerrainGeneration : MonoBehaviour
 
     public GameObject generateTerrain(Vector3 pos, bool isRight)
     {
-        GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
+        GameObject plane = GameObject.Instantiate(GameObject.FindObjectOfType<GeneratePlane>().curr.plane);
         if (isRight) {
             plane.transform.position = pos + new Vector3(X_OFFSET, Y_OFFSET, 0);
         } else {
             plane.transform.position = pos + new Vector3(-X_OFFSET, Y_OFFSET, 0);
         }
-        plane.GetComponent<Renderer>().material = planeMaterial;
 
         addPerlin(plane, multiplier, 0f, true, isRight);
 

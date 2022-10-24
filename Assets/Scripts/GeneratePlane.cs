@@ -8,19 +8,25 @@ public class GeneratePlane : MonoBehaviour
     [SerializeField] private GameObject obstacle1;
     [SerializeField] private GameObject food1;
 
+    [SerializeField] private GameObject transition1;
+
     [SerializeField] private GameObject plane2;
     [SerializeField] private GameObject obstacle2;
     [SerializeField] private GameObject food2;
+
+    [SerializeField] private GameObject transition2;
 
     [SerializeField] private GameObject plane3;
     [SerializeField] private GameObject obstacle3;
     [SerializeField] private GameObject food3;
 
+    [SerializeField] private GameObject transition3;
+
     [SerializeField] private GameObject plane4;
     [SerializeField] private GameObject obstacle4;
     [SerializeField] private GameObject food4;
 
-    struct LevelObjects
+    public struct LevelObjects
     {
         public GameObject plane;
         public GameObject obstacle;
@@ -44,8 +50,8 @@ public class GeneratePlane : MonoBehaviour
     PlayerController player;
     private int currLevel = 1;
 
-    private LevelObjects curr;
-    private LevelObjects next;
+    public LevelObjects curr;
+    public LevelObjects next;
     private bool isTransition = false;
 
     struct ObstacleInfo
@@ -210,12 +216,15 @@ public class GeneratePlane : MonoBehaviour
             switch (player.level)
             {
                 case 2:
+                    this.curr.plane = transition1;
                     this.next = new LevelObjects { plane = plane2, obstacle = obstacle2, food = food2 };
                     break;
                 case 3:
+                    this.curr.plane = transition2;
                     this.next = new LevelObjects { plane = plane3, obstacle = obstacle3, food = food3 };
                     break;
                 case 4:
+                    this.curr.plane = transition3;
                     this.next = new LevelObjects { plane = plane4, obstacle = obstacle4, food = food4 };
                     break;
             }
