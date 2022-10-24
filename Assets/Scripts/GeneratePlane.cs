@@ -8,17 +8,17 @@ public class GeneratePlane : MonoBehaviour
     [SerializeField] private GameObject obstacle1;
     [SerializeField] private GameObject food1;
 
-    [SerializeField] private GameObject food2;
-    [SerializeField] private GameObject obstacle2;
     [SerializeField] private GameObject plane2;
+    [SerializeField] private GameObject obstacle2;
+    [SerializeField] private GameObject food2;
 
-    [SerializeField] private GameObject food3;
-    [SerializeField] private GameObject obstacle3;
     [SerializeField] private GameObject plane3;
+    [SerializeField] private GameObject obstacle3;
+    [SerializeField] private GameObject food3;
 
-    [SerializeField] private GameObject food4;
-    [SerializeField] private GameObject obstacle4;
     [SerializeField] private GameObject plane4;
+    [SerializeField] private GameObject obstacle4;
+    [SerializeField] private GameObject food4;
 
     struct LevelObjects
     {
