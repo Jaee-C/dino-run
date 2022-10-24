@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             slowedSpeed = false;
             speed += speedIncrease * Time.deltaTime;
-            dodgeSpeed += speedIncrease * Time.deltaTime / 2;
+            dodgeSpeed += speedIncrease * Time.deltaTime / 4;
         }
 
 
