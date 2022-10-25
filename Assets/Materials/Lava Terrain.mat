@@ -68,9 +68,9 @@ Material:
     - _FingerprintColour1: {r: 0.4339623, g: 0.047080822, b: 0.047080822, a: 1}
     - _FingerprintColour2: {r: 0.066037714, g: 0.02250736, b: 0, a: 1}
     - _FoamColor: {r: 0.11792451, g: 0.7858298, b: 1, a: 1}
-    - _FoamColour: {r: 0, g: 1, b: 0.9578202, a: 1}
+    - _FoamColour: {r: 0.054378804, g: 0.760678, b: 0.8867924, a: 1}
     - _HightLightColor: {r: 0.9528302, g: 0.4000089, b: 0.4000089, a: 1}
-    - _LavaColour: {r: 0.75175524, g: 0.5613208, b: 1, a: 1}
+    - _LavaColour: {r: 0.6341135, g: 0.5494838, b: 0.7924528, a: 1}
     - _ShallowColor: {r: 0.39215684, g: 0.46305978, b: 1, a: 1}
     - _WaveFrequencySpeed: {r: 0.5, g: 1.5, b: 0.2, a: 1}
   m_BuildTextureStacks: []

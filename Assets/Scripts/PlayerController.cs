@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         {
             slowedSpeed = false;
             speed += speedIncrease * Time.deltaTime;
-            dodgeSpeed += speedIncrease * Time.deltaTime / 4;
+            dodgeSpeed += (float) (speedIncrease * Time.deltaTime / 2.5);
         }
 
 
@@ -128,7 +128,8 @@ public class PlayerController : MonoBehaviour
     {
         // Level up when distance ran is greater than level threshold * (level ^ 2)
         // Leveling up system should be discussed (dino runs faster as the game progressed)
-        if (this.level < maxLevel && distance > Mathf.Pow(level, level) * levelThreshold)
+        // Mathf.Pow(level, level) * levelThreshold
+        if (this.level < maxLevel && distance > level * 400)
         {
             this.level++;
         }
