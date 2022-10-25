@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1866742210}
-  yOffset: 9
-  xOffset: 3
+  yOffset: 10
+  xOffset: 6
   zOffset: 8
   followLeftRight: 0
   shakeDuration: 0.5
@@ -219,14 +219,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54431540}
-  m_LocalRotation: {x: 0.3107816, y: -0.15771703, z: 0.03794625, w: 0.9365363}
+  m_LocalRotation: {x: 0.30872136, y: -0.20043889, z: 0.052141547, w: 0.92833006}
   m_LocalPosition: {x: 4.84, y: 9.07, z: -9.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 36.448, y: -19.751, z: -1.92}
+  m_LocalEulerAnglesHint: {x: 36.448, y: -25, z: -1.92}
 --- !u!1 &119966508 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8d3bfee84931e4b499a4ad6b80a3fe4c, type: 3}
@@ -1395,7 +1395,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.45
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1453,7 +1453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160475343}
   m_LocalRotation: {x: 0.6294598, y: -0.25539282, z: 0.04197211, w: 0.73266184}
-  m_LocalPosition: {x: 0, y: 3.27, z: 1.3}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
