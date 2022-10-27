@@ -4,8 +4,6 @@
 ![](lava-shader-demo.gif)
 The first HLSL/CG that we would like to be marked on is the lava shader. This shader is used for the mountainous terrain of the final level of the game.
 
-<TODO screenshot or gif of shader in gameplay>
-
 ## Asset Files
 > List of exact paths to repective shader asset files
 * `./Assets/Shaders/Lava.shader` The shader code, written in HLSL

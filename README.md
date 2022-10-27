@@ -38,43 +38,49 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
   - [Teamwork plan/summary](#teamwork-plansummary)
   - [Final report](#final-report)
     - [Table of contents](#table-of-contents)
-    - [Game Summary](#game-summary)
     - [Technologies](#technologies)
-    - [Using Images](#using-images)
-    - [Code Snippets](#code-snippets)
+    - [Game Summary](#game-summary)
+    - [How to Play](#how-to-play)
+    - [High Level Gameplay Decisions](#high-level-gameplay-decisions)
+    - [How We Designed Objects, Entities, Textures and Other Graphical Assets](#how-we-designed-objects-entities-textures-and-other-graphical-assets)
+    - [Custom HLSL Shader 1 Report: Lava Shader](#custom-hlsl-shader-1-report-lava-shader)
+    - [Custom HLSL Shader 2 Report:](#custom-hlsl-shader-2-report)
+    - [Procedural Generation](#procedural-generation)
+    - [Particle System Report](#particle-system-report)
+    - [Evaluation (Querying and Observational Methods) Report](#evaluation-querying-and-observational-methods-report)
+    - [References](#references)
+
+### Technologies
+Project is created with:
+* Unity 2022.1.9f1 
 
 ### Game Summary
 ![https://youtu.be/4xz4iq8mCRk](GameplayDemo.gif)
 
 [_🦖 Dino Run_ ](https://youtu.be/4xz4iq8mCRk) is an endless runner game where you are a dinosaur running from lava. Avoid obstacles that slow you down, eat food to increase your speed and collect power-ups as you go. Compete with your friends to get the highest score!
 
-### Technologies
-Project is created with:
-* Unity 2022.1.9f1 
-* Ipsum version: 2.33
-* Ament library version: 999
+### How to Play
 
-### Using Images
+### High Level Gameplay Decisions
 
-You can include images/gifs by adding them to a folder in your repo, currently `Gifs/*`:
+### How We Designed Objects, Entities, Textures and Other Graphical Assets
 
-<p align="center">
-  <img src="Gifs/sample.gif" width="300">
-</p>
+---
 
-To create a gif from a video you can follow this [link](https://ezgif.com/video-to-gif/ezgif-6-55f4b3b086d4.mov).
+### [Custom HLSL Shader 1 Report: Lava Shader](./reports/lava-shader/lava-shader.md)
+![](./reports/lava-shader/lava-shader-demo.gif)
 
-### Code Snippets 
+### Custom HLSL Shader 2 Report: 
 
-You may wish to include code snippets, but be sure to explain them properly, and don't go overboard copying
-every line of code in your project!
 
-```c#
-public class CameraController : MonoBehaviour
-{
-    void Start ()
-    {
-        // Do something...
-    }
-}
-```
+### Procedural Generation
+
+
+### Particle System Report
+
+
+### [Evaluation (Querying and Observational Methods) Report](./reports/evaluation/evaluation-report.md)
+![](./reports/evaluation/evaluation-report-demo.png)
+
+---
+### References
