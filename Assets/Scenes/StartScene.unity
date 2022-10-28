@@ -1159,7 +1159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43, y: -46}
+  m_AnchoredPosition: {x: 20, y: -20}
   m_SizeDelta: {x: 129.8, y: 348.85}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &858558671
@@ -1247,20 +1247,25 @@ MonoBehaviour:
   obstacle1: {fileID: 7065790960261392762, guid: ae787cea4a92544f396db005d2501b02, type: 3}
   food1: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
   transition1: {fileID: 4911055584595967894, guid: df51e480f49871e4f8b0947332b46776, type: 3}
-  plane2: {fileID: 4911055584595967894, guid: ef184e2a9d41e4d73b615d29fb6a92e3, type: 3}
+  plane2: {fileID: 4911055584595967894, guid: 0e5e8031583c52142bc5b1e92bd7f536, type: 3}
   terrainMat2: {fileID: 2100000, guid: cd133f3b639fdaa7fafd53a6bd7a7fe2, type: 2}
   obstacle2: {fileID: 7065790960261392762, guid: 8f3483545a8f5914aaf37b4ab8797c53, type: 3}
   food2: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
   transition2: {fileID: 4911055584595967894, guid: 5074d54e45bd83545909e9d724d50395, type: 3}
-  plane3: {fileID: 4911055584595967894, guid: 08d9ef47d527b8548ae2efbff27bdcfa, type: 3}
-  terrainMat3: {fileID: 2100000, guid: 657ace3fe75f3c23fb6ee1b3d29e2dd1, type: 2}
-  obstacle3: {fileID: 7065790960261392762, guid: a2e81d6f76367484eb572b252445266a, type: 3}
+  plane3: {fileID: 4911055584595967894, guid: ef184e2a9d41e4d73b615d29fb6a92e3, type: 3}
+  terrainMat3: {fileID: 2100000, guid: 754210e896672e545b9771099ef10cb0, type: 2}
+  obstacle3: {fileID: 7065790960261392762, guid: 4e320043bdea10eb0a3e529cc5c53ec1, type: 3}
   food3: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
-  transition3: {fileID: 4911055584595967894, guid: 88d594d6bf2205641865908d7511a550, type: 3}
-  plane4: {fileID: 4911055584595967894, guid: c746a5d937478714c94ec6d57cb08108, type: 3}
-  terrainMat4: {fileID: 2100000, guid: 173dc5868120e23459dabf9150cf0949, type: 2}
-  obstacle4: {fileID: 7065790960261392762, guid: 98080518513064c68911ed063b1eabf9, type: 3}
+  transition3: {fileID: 4911055584595967894, guid: 0fe5993b76788d7558fc840c868f396b, type: 3}
+  plane4: {fileID: 4911055584595967894, guid: 08d9ef47d527b8548ae2efbff27bdcfa, type: 3}
+  terrainMat4: {fileID: 2100000, guid: 657ace3fe75f3c23fb6ee1b3d29e2dd1, type: 2}
+  obstacle4: {fileID: 7065790960261392762, guid: a2e81d6f76367484eb572b252445266a, type: 3}
   food4: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
+  transition4: {fileID: 4911055584595967894, guid: 88d594d6bf2205641865908d7511a550, type: 3}
+  plane5: {fileID: 4911055584595967894, guid: c746a5d937478714c94ec6d57cb08108, type: 3}
+  terrainMat5: {fileID: 2100000, guid: 173dc5868120e23459dabf9150cf0949, type: 2}
+  obstacle5: {fileID: 7065790960261392762, guid: 98080518513064c68911ed063b1eabf9, type: 3}
+  food5: {fileID: 7065790960261392762, guid: 127864bfcaa784e58b6617c15ee50f5b, type: 3}
   obstacleChance: 0.7
   foodChance: 0.3
 --- !u!4 &858576335
@@ -1648,11 +1653,11 @@ RectTransform:
   m_Father: {fileID: 554776365}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 295.4, y: 169.75}
-  m_SizeDelta: {x: 198.6, y: 59.2}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -20, y: -20}
+  m_SizeDelta: {x: 198.59998, y: 59.200012}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1795760089
 MonoBehaviour:
   m_ObjectHideFlags: 0

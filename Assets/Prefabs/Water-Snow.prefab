@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4911055584595967892}
   - component: {fileID: 4911055584595967893}
   m_Layer: 3
-  m_Name: Lava Plane
+  m_Name: Water-Snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4911055584595967894}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.022295648, y: -0, z: -0, w: 0.99975145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.555, y: 0, z: 0}
 --- !u!33 &4911055584595967899
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8239503b03ac794fbcf78e731d2ed6f, type: 2}
+  - {fileID: 2100000, guid: ff4312ae6e64cd442b761c6277c0dd7b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

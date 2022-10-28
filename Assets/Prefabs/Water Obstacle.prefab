@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7065790960261392767}
   - component: {fileID: 7065790960261392760}
   m_Layer: 6
-  m_Name: Level 3 Obstacle
+  m_Name: Water Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: -6652725513331149018, guid: 10ab875c50e6fe9448bceacd67b9d8e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f369ed3cad0294d52b84ed41c4a2bf80, type: 2}
+      objectReference: {fileID: 2100000, guid: b10c7142b21b7529e8108ce6c368ea9e, type: 2}
     - target: {fileID: -5932014270860095564, guid: 10ab875c50e6fe9448bceacd67b9d8e0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
