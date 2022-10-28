@@ -92,7 +92,7 @@ Project is created with:
 [![](./reports/procedural-generation/generated-objects.png)_](./reports/procedural-generation/procedural-generation.md)
 
 ---
-### [Procedural Generation](./reports/particle-systems/particle-systems.md)
+### [Particle Systems](./reports/particle-systems/particle-systems.md)
 ---
 ### [Evaluation (Querying and Observational Methods) Report](./reports/evaluation/evaluation-report.md)
 ![](./reports/evaluation/evaluation-report-demo.png)
