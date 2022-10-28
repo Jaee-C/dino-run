@@ -6,6 +6,8 @@ Shader "Custom/Water"
         _Colour("Colour", Color) = (1, 1, 1, 1)
         _MainTex("Main Texture", 2D) = "white" {}
         _TexPow("Texture Power", Float) = 1
+        _Scale("Wave Size", Float) = 1
+        _Speed("Speed", Float) = 1
         _Frequency("Movement Frequency", Float) = 1
     }
 
@@ -34,6 +36,8 @@ Shader "Custom/Water"
             float4 _MainTex_ST;
             float _TexPow;
             float _Frequency;
+            float _Scale;
+            float _Speed;
 
             // get CPU date to the vertex function
             struct vertIn
@@ -53,9 +57,11 @@ Shader "Custom/Water"
             {
                 vertOut o;
 
-                // Create waves; similar to Workshop 7
-                float4 displacement = float4(0.0f, 0.0f, sin(v.vertex.x + 0.1 + _Time.y * 0.01), 0.0f);
-				v.vertex += displacement;
+                // Create Wave Rippling Effect through y displacement
+                half4 offsetVert = (v.vertex.x * v.vertex.x) + (v.vertex.z * v.vertex.z);
+                half4 yDisplacement = _Scale * sin(_Time.w * _Speed + offsetVert * _Frequency);
+;
+				v.vertex.y += yDisplacement;
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
