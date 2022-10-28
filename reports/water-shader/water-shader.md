@@ -1,5 +1,5 @@
 # Water Shader
-> [🏠 README.md](../../README.md) | [⬅️ Lava Shader Report](../lava-shader/lava-shader.md) | [➡️ Parocedural Generation Report](../procedural-generation/procedural-generation.md)
+> [🏠 README.md](../../README.md) | [⬅️ Lava Shader Report](../lava-shader/lava-shader.md) | [➡️ Procedural Generation Report](../procedural-generation/procedural-generation.md)
 
 ![](./water-shader-demo.gif)
 > Water shader being applied onto 2 planes
