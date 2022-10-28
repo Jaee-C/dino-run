@@ -1,5 +1,35 @@
 <h1 align="center">Evaluation Report</h1>
 
+> [🏠 README.md](../../README.md) | [⬅️ Particle System Report]() | [⬅️ Lava Shader Report](../lava-shader/lava-shader.md)
+
+## Table of Contents
+- [Observational Method](#observational-method)
+  - [Methodology](#methodology)
+  - [6. Thank the player for their time](#6-thank-the-player-for-their-time)
+  - [Results](#results)
+    - [Observational Session Notes](#observational-session-notes)
+      - [Participant 1](#participant-1)
+        - [Likes](#likes)
+        - [Improvements](#improvements)
+      - [Participant 2](#participant-2)
+        - [Likes](#likes-1)
+        - [Improvements](#improvements-1)
+      - [Participant 3](#participant-3)
+        - [Likes](#likes-2)
+        - [Improvements](#improvements-2)
+      - [Participant 4](#participant-4)
+        - [Likes](#likes-3)
+        - [Improvements](#improvements-3)
+      - [Paticipant 5](#paticipant-5)
+        - [Likes](#likes-4)
+        - [Improvements](#improvements-4)
+    - [Other Observations Found](#other-observations-found)
+- [Query Technique](#query-technique)
+    - [Demographic](#demographic)
+    - [Responses](#responses)
+    - [Conclusion](#conclusion)
+- [Improvements Made Based on the Findings](#improvements-made-based-on-the-findings)
+
 # Observational Method
 ## Methodology
 Amongst the 3 types of observational methods we've learnt (Think Aloud, Cooperative Evaluation and Post-task walkthroughs), we chose to perform Post-task walkthroughs. This is donw by initially observing the participants then discussing with them afterwards about specific things that they had done or how they felt overall about the game. We decided on this technique as it made playing a bit more natural to player and didn't want to interrupt them while they played. We also told them that they could note down any thoughts they might want to talk about so they wouldn't forget about them when we started the discussions.
@@ -151,6 +181,9 @@ Most of our particpants enjoyed video games but the number of hours spent per we
 ![](2022-10-27-10-07-45.png)
 
 ![](2022-10-27-10-07-57.png)
+
+### Conclusion
+We were fairly pleased with the responses as it indicated that our game was easy to play and use, and accomodated the users. 
 
 ---
 
