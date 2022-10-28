@@ -1,8 +1,20 @@
 # Lava Shader
-> Written and Implemented by Xin Yu Chuah
+> [🏠 README.md](../../README.md) | [⬅️ Evaluation Report](../evaluation/evaluation-report.md) | [➡️ Water Shader](../water-shader/water-shader.md)
 
 ![](lava-shader-demo.gif)
 The first HLSL/CG that we would like to be marked on is the lava shader. This shader is used for the mountainous terrain of the final level of the game.
+
+## Table of Contents
+- [Lava Shader](#lava-shader)
+  - [Table of Contents](#table-of-contents)
+  - [Asset Files](#asset-files)
+  - [Attributes](#attributes)
+  - [Breakdown](#breakdown)
+    - [Vertex Shader](#vertex-shader)
+    - [Fragment Shader](#fragment-shader)
+      - [Foam](#foam)
+    - [Caustics](#caustics)
+    - [Final Colour](#final-colour)
 
 ## Asset Files
 > List of exact paths to repective shader asset files
@@ -99,6 +111,4 @@ float4 frag(vertOut v): SV_Target
 }
 ```
 
-
-## Resources
-* https://catlikecoding.com/unity/tutorials/rendering/part-2/
+> Written and Implemented by Xin Yu Chuah

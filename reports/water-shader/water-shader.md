@@ -1,17 +1,34 @@
 # Water Shader
-> Written and Implemented by Chuah Xin Yu
+> [🏠 README.md](../../README.md) | [⬅️ Lava Shader Report](../lava-shader/lava-shader.md) | [➡️ Parocedural Generation Report](../procedural-generation/procedural-generation.md)
 
 ![](./water-shader-demo.gif)
+> Water shader being applied onto 2 planes
 
-The other HLSL/CG shader that we would like to be marked on is the water shader. This shader is used as part of the plane prefab for one of the levels in the game.
+The other HLSL/CG shader that we would like to be marked on is the water shader. This shader is used as part of the plane prefab for one of the levels in the game: the water level.
+
+![](./water-in-game-demo.gif)
+> Water shader being used for the ground planes of the water level
+
+## Table of Contents
+- [Water Shader](#water-shader)
+  - [Table of Contents](#table-of-contents)
+  - [Asset Files](#asset-files)
+  - [Attributes](#attributes)
+  - [Breakdown](#breakdown)
+    - [Tags and SubShader Properties](#tags-and-subshader-properties)
+    - [Vertex Shader](#vertex-shader)
+    - [Fragment Shader](#fragment-shader)
 
 ## Asset Files
 > List of exact paths to respective shader asset files
 * `./Assets/Shaders/Water.shader` The shader code, written in HLSL
-* `./Assets/Shaders`
+* `./Assets/Shaders/Noise.png` Main texture used for overlay colour
+* `./Assets/Materials/Water.mat` Material that utilises the water shader (this material is used for the planes of the water level)
 
 ## Attributes
 ![](2022-10-28-12-26-07.png)
+* The Colour and Texture Attributes are mainly for the fragment/vertex shader
+* While the Wave Attributes are for the vertex shader
 
 ## Breakdown
 * This shader implements botj the `vert()` and `frag()` functions
@@ -59,6 +76,7 @@ vertOut vert( vertIn v)
   return o;
 }
 ```
+* The vertex shader creates a mild wave rippling effect somewhat similar to the waves in Workshop 7
 
 
 ### Fragment Shader
@@ -80,3 +98,6 @@ float4 frag(vertOut v):SV_TARGET
   return finalColour;
 }
 ```
+* The fragment shader essentially colours the texture with whatever colour is selected by the user and leaves all of the other pixels untouched; which, due to the [Tags and SubShader Properties](#tags-and-subshader-properties), will be render the original pixel colour (ie. make the material look transparent).
+
+> Written and Implemented by Chuah Xin Yu
