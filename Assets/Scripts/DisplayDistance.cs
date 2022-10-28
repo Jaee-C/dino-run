@@ -11,6 +11,6 @@ public class DisplayDistance : MonoBehaviour
     void Update()
     {
         // Display only 3 decimal places of the distance ran
-        distanceText.text = "Level: " + player.level + "\nDistance: " + player.distanceRan.ToString("F3");
+        distanceText.text = "Level:         " + player.level + "\nDistance:   " + player.distanceRan.ToString("F3");
     }
 }
