@@ -2,10 +2,11 @@ Shader "Custom/Water"
 {
     Properties
     {
-        [Header(Color)]
+        [Header(Color and Texture)]
         _Colour("Colour", Color) = (1, 1, 1, 1)
         _MainTex("Main Texture", 2D) = "white" {}
         _TexPow("Texture Power", Float) = 1
+        [Header(Wave)]
         _Scale("Wave Size", Float) = 1
         _Speed("Speed", Float) = 1
         _Frequency("Movement Frequency", Float) = 1
@@ -60,7 +61,7 @@ Shader "Custom/Water"
                 // Create Wave Rippling Effect through y displacement
                 half4 offsetVert = (v.vertex.x * v.vertex.x) + (v.vertex.z * v.vertex.z);
                 half4 yDisplacement = _Scale * sin(_Time.w * _Speed + offsetVert * _Frequency);
-;
+
 				v.vertex.y += yDisplacement;
 
                 o.vertex = UnityObjectToClipPos(v.vertex);
