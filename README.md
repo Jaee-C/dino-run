@@ -18,10 +18,11 @@
   * Every feature should be code reviewed (ie. pull requests should be approved by at least 1 other member before merging)
 * Communicate with the team if tasks cannot be completed on time.
 * Delegation
-  * Xin Yu: 3D Models and Shaders
-  * Aurelia: Animation and UI
-  * Bowen: Procedural Generation and Footstep Particles
-  * Daniel: Procedural Generation
+  * Trello Board: https://trello.com/b/sPAhp9Cl/dino-run
+  * Xin Yu: Project Management, 3D Models and Shaders
+  * Aurelia: Rigging, Animation and UI
+  * Bowen: Procedural Generation, Footstep Particles
+  * Daniel: Procedural Generation, Start Screen, Explosion Particles
 
 <!-- [[EndTeamworkPlan]] PLEASE LEAVE THIS LINE UNTOUCHED -->
 
