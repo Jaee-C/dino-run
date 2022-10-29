@@ -76,8 +76,6 @@ vertOut vert( vertIn v)
   return o;
 }
 ```
-* The vertex shader creates a mild wave rippling effect somewhat similar to the waves in Workshop 7
-
 
 ### Fragment Shader
 ```c
