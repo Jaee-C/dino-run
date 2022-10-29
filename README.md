@@ -67,6 +67,13 @@ Project is created with:
 ### How to Play
 ![](./reports/Instruction%20Screen.png)
 
+* Move the dinosaur character left and right using the arrow keys
+* Your health bar depletes over time
+* Avoid cacti as it decreases your health
+* Eat chicken to regain your health
+* The game ends when your health bar reaches zero
+* There are 5 levels and the goal is to get the highest score! (scores are based off of the distance travelled)
+
 ---
 ### High Level Gameplay Decisions
 * We had to decide between either creating multiple maps that the player would be able to choose or a continuous game that would transition between multiple levels - we decided on the latter to keep the game simple and straightforward and reduce decision fatigue within the player
