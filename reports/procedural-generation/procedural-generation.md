@@ -1,11 +1,21 @@
 # Procedural Generation
+> [🏠 README.md](../../README.md) | [⬅️ Water Shader Report](../water-shader/water-shader.md) | [➡️ Particle System Report](../particle-systems/particle-systems.md)
 
 Procedural generation is used in placing obstacles and food onto the game area.
 
 ![](./generated-objects.png)
 
+## Table of Contents
+- [Procedural Generation](#procedural-generation)
+  - [Table of Contents](#table-of-contents)
+  - [Asset files](#asset-files)
+  - [Attributes](#attributes)
+  - [Breakdown](#breakdown)
+    - [Generating Objects](#generating-objects)
+    - [Choosing food or obstacles](#choosing-food-or-obstacles)
+    - [Sensible layout](#sensible-layout)
+
 ## Asset files
-> List of exact paths to repective shader asset files
 * `/Assets/Scripts/GeneratePlane.cs`: Implementation of procedural generation within `generateObstacles()`
 
 ## Attributes
@@ -71,3 +81,4 @@ if (Random.value < count / 190f * obstacleChance)
 }
 ```
 
+> Implemented by Weng Jae Chin and Bowen Feng; Written by Weng Jae Chin.

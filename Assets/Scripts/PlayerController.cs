@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float levelThreshold = 100f;
     public float distanceRan;
     public int level;
-    private int maxLevel = 4;
+    private int maxLevel = 5;
 
     void Start()
     {
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         restartButton.SetActive(false);
         distanceRan = 0.0f;
         level = 1;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -129,7 +130,7 @@ public class PlayerController : MonoBehaviour
         // Level up when distance ran is greater than level threshold * (level ^ 2)
         // Leveling up system should be discussed (dino runs faster as the game progressed)
         // Mathf.Pow(level, level) * levelThreshold
-        if (this.level < maxLevel && distance > level * 400)
+        if (this.level < maxLevel && distance > level * 300)
         {
             this.level++;
         }
