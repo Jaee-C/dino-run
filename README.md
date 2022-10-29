@@ -3,7 +3,7 @@
 **The University of Melbourne**
 # COMP30019 – Graphics and Interaction
 
-![](DinoRunLogo.png)
+![](./reports/DinoRunLogo.png)
 
 ## Teamwork plan/summary
 
