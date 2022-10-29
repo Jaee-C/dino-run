@@ -46,7 +46,7 @@ For more details you can find a guide [here](https://docs.github.com/en/github/w
     - [Custom HLSL Shader 1 Report: Lava Shader](#custom-hlsl-shader-1-report-lava-shader)
     - [Custom HLSL Shader 2 Report: Water Shader](#custom-hlsl-shader-2-report-water-shader)
     - [Procedural Generation](#procedural-generation)
-    - [Particle System Report](#particle-system-report)
+    - [Particle Systems](#particle-systems)
     - [Evaluation (Querying and Observational Methods) Report](#evaluation-querying-and-observational-methods-report)
     - [References](#references)
 
@@ -89,10 +89,13 @@ Project is created with:
 
 ---
 ### [Procedural Generation](./reports/procedural-generation/procedural-generation.md)
-[![](./reports/procedural-generation/generated-objects.png)_](./reports/procedural-generation/procedural-generation.md)
+[![](./reports/procedural-generation/generated-objects.png)](./reports/procedural-generation/procedural-generation.md)
 
 ---
+
 ### [Particle Systems](./reports/particle-systems/particle-systems.md)
+![](./reports/particle-systems/particle-system-demo.gif)
+
 ---
 ### [Evaluation (Querying and Observational Methods) Report](./reports/evaluation/evaluation-report.md)
 ![](./reports/evaluation/evaluation-report-demo.png)

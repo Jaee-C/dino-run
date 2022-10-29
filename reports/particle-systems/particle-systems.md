@@ -3,17 +3,19 @@
 > [🏠 README.md](../../README.md) | [⬅️ Evaluation Report](../evaluation/evaluation-report.md) | [➡️ Water Shader](../water-shader/water-shader.md)
 
 A physics based particle system used to generate particles in-game.
+![](./particle-system-demo.gif)
 
 ## Table of Contents
 - [Particle Systems](#particle-systems)
-  - [Table of Contents](#table-of-contents)
-  - [Asset Files](#asset-files)
-  - [Attributes](#attributes)
-  - [Breakdown](#breakdown)
-    - [Calculating directional square](#calculating-directional-square)
-    - [Sampling points on the direction square](#sampling-points-on-the-direction-square)
-    - [Instantiating particles](#instantiating-particles)
-    - [Controlling particle life span](#controlling-particle-life-span)
+	- [Table of Contents](#table-of-contents)
+	- [Asset Files](#asset-files)
+	- [Attributes](#attributes)
+		- [Additional attributes](#additional-attributes)
+	- [Breakdown](#breakdown)
+		- [Calculating directional square](#calculating-directional-square)
+		- [Sampling points on the direction square](#sampling-points-on-the-direction-square)
+		- [Instantiating particles](#instantiating-particles)
+		- [Controlling particle life span](#controlling-particle-life-span)
 
 ## Asset Files
 * `./Assets/Scripts/ParticleManager.cs` Code used to generate particles. Used as a Singleton by statically assigning to a single game object.
