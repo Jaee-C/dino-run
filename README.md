@@ -59,25 +59,27 @@ Project is created with:
 
 ---
 ### Game Summary
-[![](./demo-all-levels.GIF)](https://youtu.be/4xz4iq8mCRk)
+[![](./reports/demo-all-levels.GIF)](https://youtu.be/4xz4iq8mCRk)
 
 [_🦖 Dino Run_ ](https://youtu.be/4xz4iq8mCRk) is an endless runner game where you are a dinosaur running away to save yourself. Avoid obstacles that slow you down and eat food to increase your speed. Try to survive all 5 levels and compete with your friends to get the highest score!
 
 ---
 ### How to Play
-![](./Instruction%20Screen.png)
+![](./reports/Instruction%20Screen.png)
 
 ---
 ### High Level Gameplay Decisions
-* We had to decide between either creating multiple maps that the player would be able to choose 
+* We had to decide between either creating multiple maps that the player would be able to choose or a continuous game that would transition between multiple levels - we decided on the latter to keep the game simple and straightforward and reduce decision fatigue within the player
+  * ![](./reports/levels-demo.png)
 * We had initially also had the idea of adding powerups but then realised that the game was already very fast-paced and the player already had a pretty clear objective that took most of their focus. As such, we decided not to clutter the screen with too many assets and features and decided to keep the game as simple and minimalistic possible.
 * We also decided to change our camera angle as it was rather unflattering for our dinosaur model initially. There was a bit of a tradeoff between aesthetics and playability when changing the camera angle but we believe that our final camera angle captures the best of both worlds.
 
 ---
 ### How We Designed Objects, Entities, Textures and Other Graphical Assets
-![](./models-demo.png)
 * The dinosaur player model as well as the cactus model was created from scratch using Blender by Chuah Xin Yu
+  * ![](./reports/models-demo.png)
 * The animation of the dinosaur was also done by Aurelia Iskandar
+  * ![](./reports/animation-demo.gif)
 * All of the materials were also created by the team using Unity
 
 ---
