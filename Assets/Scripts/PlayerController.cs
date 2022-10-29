@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         restartButton.SetActive(false);
         distanceRan = 0.0f;
         level = 1;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
