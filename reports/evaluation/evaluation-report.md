@@ -95,7 +95,7 @@ We carried out 5 Observational Sessions on a demographic of 3 females and 2 male
 * 3D Models
 
 ##### Improvements
-* Wasn't sure about the cactus hitboxees, especially around the cactus arms
+* Wasn't sure about the cactus hitboxes, especially around the cactus arms
 * Felt that the initial speed was too slow
 * Needed to explain how to play the game
 * Didn't like the glitching that happened when the player was at high speeds
@@ -107,7 +107,7 @@ We carried out 5 Observational Sessions on a demographic of 3 females and 2 male
 #### Participant 4
 > * Age: 17-19yo
 > * Gender: Male
-> * Course: Bachlor of Science
+> * Course: Bachelor of Science
 > * Like Video Games?: Yes
 > * Hours of Video Games per week: < 1 hour
 
@@ -152,7 +152,7 @@ We carried out 5 Observational Sessions on a demographic of 3 females and 2 male
 ---
 
 # Query Technique
-We decided to use questionaaires as our querying technique as it was easy to administer and analyse and allowed us to easily reach a lot of users as well as easily compare across them. We also based our questionnaire around the SUS 
+We decided to use questionnaires as our querying technique as it was easy to administer and analyse and allowed us to easily reach a lot of users as well as easily compare across them. We also based our questionnaire around the System Usability Scale (SUS). 
 
 ### Demographic
 We managed to get an almost even split amongst males and females, mostly between the ages of 20 to 24 (inclusive) with majority studying Bachelors of Science or Bachelors of Commerce.
