@@ -21,7 +21,7 @@ The first HLSL/CG that we would like to be marked on is the lava shader. This sh
 * `./Assets/Shaders/Lava.shader` The shader code, written in HLSL
 * `./Assets/Shaders/Noise.png` Noise texture used for the flowing 
 * `./Assets/Shaders/T_Caustics03.png` Caustics texture used to give the 'lava' look (found from <TODO insert link>)
-* `./Assets/Materials/Lava Terrain.mat` material that utilises the lava shader (this material is applied to the mountainuos terrain of the final level of the game)
+* `./Assets/Materials/Lava Terrain.mat` material that utilises the lava shader (this material is applied to the mountainous terrain of the final level of the game)
 
 ## Attributes
 ![](lava-shader-attributes.png)
