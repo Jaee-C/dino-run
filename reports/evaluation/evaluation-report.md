@@ -72,7 +72,7 @@ We carried out 5 Observational Sessions on a demographic of 3 females and 2 male
 > * Hours of Video Games per week: 4-7 hours
 
 ##### Likes
-* Effects of perticles when player hits obstacles
+* Effects of particles when player hits obstacles
 * Running animation
 * 3D Models: Chicken, Cactus Model
 * Speed at grass level (level3)
